@@ -118,7 +118,7 @@ export function App() {
               <footer className="pt-8 border-t-2 border-dashed border-[#3C3530]/30 text-center select-none space-y-2">
                 <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-mono text-[#3C3530]/70">
                   <span>handcrafted with ✿ by</span>
-                  <span className="font-bold underline text-[#3C3530]">{PERSONAL_INFO.name} ({PERSONAL_INFO.nickname})</span>
+                  <span className="font-bold underline text-[#3C3530]">{PERSONAL_INFO.name}</span>
                   <span>•</span>
                   <span>IIIT Vadodara (2023–2027)</span>
                   <span>•</span>

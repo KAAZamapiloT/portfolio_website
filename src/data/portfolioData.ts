@@ -2,20 +2,40 @@ import { Project, SkillCategory, ExperienceItem } from '../types';
 
 export const PERSONAL_INFO = {
   name: "Uday Singh",
-  nickname: "yuki",
-  roleTitle: "Software Engineer | C/C++ Systems & Low-Latency Performance",
+  roleTitle: "Software Engineer | C/C++ Systems & Performance Engineering",
   location: "Gandhinagar, Gujarat, India",
   institution: "IIIT Vadodara (2023 - 2027)",
   cpi: "7.56",
   email: "dev352418@gmail.com",
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
-  bio: "hey there! i'm a systems engineer obsessed with raw performance, low-latency architectures, and building everything from scratch. from custom memory allocators and b+ tree storage engines to cpu software 3d rasterizers and linux container runtimes.",
+  github: "https://github.com/KAAZamapiloT",
+  linkedin: "https://www.linkedin.com/in/uday-singh-5b5a3828b/",
+  bio: "hey there! i'm a systems engineer obsessed with raw performance, low-latency architectures, and building everything from scratch. from custom memory allocators and b+ tree storage engines to cpu software 3d rasterizers, linux container runtimes, and real-time generative scene pipelines in unreal engine 5.",
   shortBio: "crafting high-performance systems from first principles with a playful sketchbook heart ✎ ⋆ ✿",
-  statusBadge: "available for 2026/2027 roles & systems research ♡",
+  statusBadge: "available for 2026/2027 systems & performance engineering roles ♡",
 };
 
 export const PROJECTS: Project[] = [
+  {
+    id: "project-canvas",
+    title: "Project Canvas",
+    category: "generative ai & ue5 engine",
+    bgColor: "#EBF4F5", // pale blue / teal
+    accentColor: "#4B8296",
+    stampText: "UE5 + AI",
+    stampIcon: "🎬",
+    shortDesc: "LLM-driven scene-generation pipeline in UE5: natural-language prompt ➔ strict JSON scene plan ➔ live lighting, fog and actor spawning.",
+    longDesc: "built an LLM-driven scene-generation pipeline in Unreal Engine 5 using the high-speed Groq API. Designed USceneBuilder, a 5-tier asset resolver (exact, substring, keyword, fuzzy, fallback), and an 11-tier location query engine to dynamically map natural language onto inconsistently named 3D assets.",
+    techStack: ["C++", "Unreal Engine 5", "Groq API", "JSON Schema", "5-Tier Resolver", "Context-Aware AI"],
+    features: [
+      "Natural-language prompt ➔ strict JSON scene plan ➔ live lighting, fog and actor spawning in UE5",
+      "5-tier asset resolver (exact, substring, keyword, fuzzy Levenshtein, fallback) for inconsistently named assets",
+      "11-tier location query engine mapping spatial descriptions onto 3D world coordinates",
+      "Real-time USceneBuilder actor manipulation with dual-pipeline context-aware combat AI"
+    ],
+    benchmark: "Sub-200ms Groq LLM inference • 5-tier fuzzy asset resolver",
+    githubUrl: "https://github.com/KAAZamapiloT/Project-CANVAS.git",
+    demoType: "canvas"
+  },
   {
     id: "volt",
     title: "volt",
@@ -34,7 +54,7 @@ export const PROJECTS: Project[] = [
       "Concurrent ThreadPool job system as the low-overhead foundation for parallel execution"
     ],
     benchmark: "0 heap allocations in hot paths • Lock-Free SPSC Queues",
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/KAAZamapiloT",
     demoType: "allocator"
   },
   {
@@ -55,7 +75,7 @@ export const PROJECTS: Project[] = [
       "Hand-written recursive descent SQL lexer, AST parser, and CRUD execution engine"
     ],
     benchmark: "120,000+ records indexed • Sub-millisecond B+ Tree lookups",
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/KAAZamapiloT",
     demoType: "sql"
   },
   {
@@ -76,7 +96,7 @@ export const PROJECTS: Project[] = [
       "Object-level frustum culling cutting latency from 73.4ms to 32.6ms (2.25x speedup) on 216-entity scene"
     ],
     benchmark: "2.25x speedup (73.4ms → 32.6ms) • 100% CPU Rasterization",
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/KAAZamapiloT",
     demoType: "rasterizer"
   },
   {
@@ -97,7 +117,7 @@ export const PROJECTS: Project[] = [
       "JSON-driven container manifest engine and interactive lifecycle manager CLI"
     ],
     benchmark: "True kernel-level isolation • Sub-millisecond container spinup",
-    githubUrl: "https://github.com",
+    githubUrl: "https://github.com/KAAZamapiloT",
     demoType: "container"
   }
 ];
@@ -138,13 +158,13 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     ]
   },
   {
-    title: "Graphics, Math & Compute",
+    title: "Graphics, UE5 & Generative AI",
     icon: "🎨",
-    badgeColor: "#F1EBF5",
+    badgeColor: "#EBF4F5",
     skills: [
+      { name: "Unreal Engine 5 & Groq API", level: 5, note: "USceneBuilder, LLM scene pipeline, 5-tier asset resolver, 11-tier location engine", isKey: true },
       { name: "3D Linear Algebra", level: 5, note: "vectors, matrices, 4x4 projections, quaternions, coordinate spaces", isKey: true },
       { name: "CPU Software Rasterizer", level: 5, note: "barycentric interpolation, Z-buffer, clip space, 6-DOF camera", isKey: true },
-      { name: "SDL3 & Unreal Engine 5", level: 4, note: "framebuffer blitting, C++ game/simulation architecture" },
       { name: "Frustum Culling & Optimization", level: 5, note: "bounding spheres, AABB tests, 2.25x latency reduction" },
     ]
   },

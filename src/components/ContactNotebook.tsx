@@ -173,7 +173,7 @@ export const ContactNotebook: React.FC = () => {
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="e.g. Yuki, Ada Lovelace..."
+                          placeholder="e.g. Ada Lovelace, Linus Torvalds..."
                           className="w-full bg-transparent border-b-2 border-[#3C3530] px-1 py-1 text-sm font-medium text-[#3C3530] placeholder-[#3C3530]/40 focus:outline-none focus:border-[#E27B7B]"
                         />
                       </div>

@@ -7,10 +7,11 @@ import { AllocatorDemo } from './demos/AllocatorDemo';
 import { RasterizerDemo } from './demos/RasterizerDemo';
 import { SqlDemo } from './demos/SqlDemo';
 import { ContainerDemo } from './demos/ContainerDemo';
+import { CanvasDemo } from './demos/CanvasDemo';
 import { playCutePop } from '../utils/audio';
 
 export const Projects: React.FC = () => {
-  const [selectedDemoId, setSelectedDemoId] = useState<string | null>('pixel'); // open pixel by default for instant delight!
+  const [selectedDemoId, setSelectedDemoId] = useState<string | null>('project-canvas'); // open Project CANVAS by default!
 
   const handleToggleDemo = (id: string) => {
     playCutePop(890);
@@ -112,6 +113,7 @@ export const Projects: React.FC = () => {
                 {/* Live Demo Drawer inside card */}
                 {isDemoActive && (
                   <div className="mb-4 animate-fadeIn">
+                    {proj.demoType === 'canvas' && <CanvasDemo />}
                     {proj.demoType === 'allocator' && <AllocatorDemo />}
                     {proj.demoType === 'rasterizer' && <RasterizerDemo />}
                     {proj.demoType === 'sql' && <SqlDemo />}

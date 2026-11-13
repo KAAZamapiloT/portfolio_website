@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { playCutePop } from '../utils/audio';
 
 const DIALOGUES = [
-  { mood: 'happy', text: "hello! i'm uday (yuki) ✿ welcome to my sketchbook!", emoji: "🌸" },
-  { mood: 'excited', text: "psst! all my systems projects run with zero heap bloat! ⚡", emoji: "✨" },
+  { mood: 'happy', text: "hello! i'm uday ✿ welcome to my sketchbook!", emoji: "🌸" },
+  { mood: 'ue5', text: "check out project canvas: real-time scene generation in UE5 with Groq! 🎬", emoji: "✨" },
+  { mood: 'excited', text: "all my systems projects run with zero heap bloat & deterministic cache lines! ⚡", emoji: "💻" },
   { mood: 'blush', text: "hehee you clicked me! feel free to peel stickers below ♡", emoji: "💖" },
-  { mood: 'code', text: "currently tuning b+ tree nodes & lock-free queues! 💻", emoji: "☕" },
-  { mood: 'star', text: "try spinning the 3d cube in the pixel project card! 🎨", emoji: "⭐" },
+  { mood: 'star', text: "try spinning the 3d gem in the pixel project card! 🎨", emoji: "⭐" },
 ];
 
 export const ChibiAvatar: React.FC = () => {

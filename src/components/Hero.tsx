@@ -66,7 +66,7 @@ export const Hero: React.FC = () => {
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#3C3530] leading-none mb-2">
                 hello! i'm <span className="marker-highlight font-display underline decoration-wavy decoration-[#E27B7B]/70">{PERSONAL_INFO.name.toLowerCase()}</span>
-                <span className="text-2xl sm:text-3xl ml-2 font-normal text-[#3C3530]/70">(aka {PERSONAL_INFO.nickname} ✿)</span>
+                <span className="text-2xl sm:text-3xl ml-2 font-normal text-[#E27B7B]">✿</span>
               </h1>
               <p className="text-base sm:text-lg font-bold text-[#3C3530]/90">
                 {PERSONAL_INFO.roleTitle}
@@ -90,10 +90,10 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Action Buttons styled like cute stamped labels */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-2.5 pt-2">
               <button
                 onClick={() => handleScrollTo('projects')}
-                className="px-4 py-2 bg-[#F9EFE4] hover:bg-[#F2DFC9] border-2 md:border-[3px] border-[#3C3530] rounded-xl font-bold text-sm md:text-base shadow-[3px_3px_0px_#3C3530] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
+                className="px-3.5 py-1.5 bg-[#F9EFE4] hover:bg-[#F2DFC9] border-2 md:border-[3px] border-[#3C3530] rounded-xl font-bold text-xs sm:text-sm shadow-[3px_3px_0px_#3C3530] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
               >
                 <span>📁</span>
                 <span>explore projects ♡</span>
@@ -101,18 +101,38 @@ export const Hero: React.FC = () => {
 
               <button
                 onClick={() => handleScrollTo('contact')}
-                className="px-4 py-2 bg-[#FCEBEB] hover:bg-[#FAD9D9] border-2 md:border-[3px] border-[#3C3530] rounded-xl font-bold text-sm md:text-base shadow-[3px_3px_0px_#3C3530] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
+                className="px-3.5 py-1.5 bg-[#FCEBEB] hover:bg-[#FAD9D9] border-2 md:border-[3px] border-[#3C3530] rounded-xl font-bold text-xs sm:text-sm shadow-[3px_3px_0px_#3C3530] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5"
               >
                 <span>💌</span>
-                <span>open contact pad ✎</span>
+                <span>contact pad ✎</span>
               </button>
+
+              <a
+                href={PERSONAL_INFO.github}
+                target="_blank"
+                rel="noreferrer"
+                className="px-3 py-1.5 bg-[#FAF5EB] hover:bg-[#F1EBF5] border-2 md:border-[3px] border-[#3C3530] rounded-xl font-bold text-xs sm:text-sm shadow-[3px_3px_0px_#3C3530] hover:scale-105 active:scale-95 transition-all flex items-center gap-1 text-[#3C3530]"
+              >
+                <span>🐙</span>
+                <span>GitHub</span>
+              </a>
+
+              <a
+                href={PERSONAL_INFO.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="px-3 py-1.5 bg-[#EBF4F5] hover:bg-[#D5EBF0] border-2 md:border-[3px] border-[#3C3530] rounded-xl font-bold text-xs sm:text-sm shadow-[3px_3px_0px_#3C3530] hover:scale-105 active:scale-95 transition-all flex items-center gap-1 text-[#3C3530]"
+              >
+                <span>💼</span>
+                <span>LinkedIn</span>
+              </a>
 
               <a
                 href="/RESUME_Q-1.pdf"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => playPaperRustle()}
-                className="px-3 py-2 bg-[#EEF3EB] hover:bg-[#DEEBD7] border-2 md:border-[3px] border-[#3C3530] rounded-xl font-bold text-sm shadow-[3px_3px_0px_#3C3530] hover:scale-105 active:scale-95 transition-all flex items-center gap-1 text-[#3C3530]"
+                className="px-3 py-1.5 bg-[#EEF3EB] hover:bg-[#DEEBD7] border-2 md:border-[3px] border-[#3C3530] rounded-xl font-bold text-xs sm:text-sm shadow-[3px_3px_0px_#3C3530] hover:scale-105 active:scale-95 transition-all flex items-center gap-1 text-[#3C3530]"
               >
                 <span>📄</span>
                 <span>resume.pdf</span>

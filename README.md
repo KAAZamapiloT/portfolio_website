@@ -19,10 +19,11 @@ Designed to faithfully evoke the look and feel of an open scrapbooked spiral jou
    - **Layered Elements**: Faux washi tape strips (candy diagonal stripes, polka dots, gingham), paperclips (`📎`), push pins (`📌`), and torn craft paper underlays.
 
 3. **Chibi Avatar & Mood Dialogue**:
-   - Handcrafted kawaii chibi character (Uday / Yuki) with big expressive eyes, rosy blush cheeks, and waving hand animation.
+   - Handcrafted kawaii chibi character (Uday) with big expressive eyes, rosy blush cheeks, and waving hand animation.
    - Interactive dialogue bubble: click the chibi to switch moods, thoughts, and cute quotes!
 
-4. **Interactive Systems Labs**:
+4. **Interactive Systems & Engine Labs**:
+   - **Project CANVAS (Generative AI & UE5)**: Real-time LLM-driven scene generation pipeline in Unreal Engine 5 with Groq API, 5-tier asset resolver, and 11-tier location engine!
    - **Volt (Memory & Allocators)**: Real-time visual arena block allocator simulator (Linear vs Pool allocator with 0 heap calls!).
    - **Pixel (3D CPU Software Rasterizer)**: Interactive 3D spinning wireframe & shaded polygon renderer on canvas, projected with hand-written linear algebra matrices.
    - **QuartzDB (Storage Engine)**: Interactive SQL terminal runner and 4KB slotted-page B+ Tree benchmark inspector.
