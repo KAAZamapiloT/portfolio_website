@@ -1,0 +1,231 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --charcoal: #3C3530;
+    --cream: #FDFBF7;
+    --paper: #FAF5EB;
+    --craft: #EADBC8;
+  }
+
+  body {
+    color: #3C3530;
+    font-family: "Gaegu", "Fredoka", cursive, sans-serif;
+    background-color: #262220;
+    background-image: radial-gradient(#3a3430 1px, transparent 1px);
+    background-size: 24px 24px;
+    overflow-x: hidden;
+  }
+
+  /* Custom kawaii scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAF5EB;
+    border-left: 2px solid #3C3530;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #EADBC8;
+    border: 2px solid #3C3530;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FCEBEB;
+  }
+}
+
+/* Background paper textures */
+.bg-graph-paper {
+  background-color: #FAF5EB;
+  background-image: 
+    linear-gradient(to right, rgba(60, 53, 48, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(60, 53, 48, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.bg-lined-paper {
+  background-color: #FAF5EB;
+  background-image: linear-gradient(to bottom, rgba(60, 53, 48, 0.1) 1px, transparent 1px);
+  background-size: 100% 28px;
+  line-height: 28px;
+}
+
+.bg-dot-paper {
+  background-color: #FAF5EB;
+  background-image: radial-gradient(rgba(60, 53, 48, 0.15) 1.5px, transparent 1.5px);
+  background-size: 20px 20px;
+}
+
+.bg-kraft-paper {
+  background-color: #EADBC8;
+  background-image: 
+    radial-gradient(rgba(60, 53, 48, 0.05) 1px, transparent 1px),
+    linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%);
+  background-size: 16px 16px;
+}
+
+/* Postage stamp perforated edges */
+.stamp-edge {
+  position: relative;
+  background-clip: padding-box;
+}
+
+.stamp-border {
+  border: 2px dashed #3C3530;
+  box-shadow: 
+    0 0 0 4px #FAF5EB,
+    0 0 0 6px #3C3530,
+    3px 3px 0px 5px rgba(60, 53, 48, 0.4);
+}
+
+/* Washi tape striped patterns */
+.washi-stripes-pink {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(252, 235, 235, 0.95),
+    rgba(252, 235, 235, 0.95) 8px,
+    rgba(255, 215, 215, 0.95) 8px,
+    rgba(255, 215, 215, 0.95) 16px
+  );
+}
+
+.washi-stripes-purple {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(241, 235, 245, 0.95),
+    rgba(241, 235, 245, 0.95) 8px,
+    rgba(225, 210, 235, 0.95) 8px,
+    rgba(225, 210, 235, 0.95) 16px
+  );
+}
+
+.washi-polka-purple {
+  background-color: rgba(241, 235, 245, 0.95);
+  background-image: radial-gradient(rgba(175, 145, 195, 0.6) 2px, transparent 2px);
+  background-size: 10px 10px;
+}
+
+.washi-stripes-mint {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(238, 243, 235, 0.95),
+    rgba(238, 243, 235, 0.95) 8px,
+    rgba(215, 230, 210, 0.95) 8px,
+    rgba(215, 230, 210, 0.95) 16px
+  );
+}
+
+.washi-stripes-peach {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(249, 239, 228, 0.95),
+    rgba(249, 239, 228, 0.95) 8px,
+    rgba(245, 218, 195, 0.95) 8px,
+    rgba(245, 218, 195, 0.95) 16px
+  );
+}
+
+/* Torn paper edge effect */
+.torn-bottom {
+  clip-path: polygon(
+    0% 0%, 
+    100% 0%, 
+    100% calc(100% - 8px),
+    95% 100%, 90% calc(100% - 6px), 85% 100%, 80% calc(100% - 7px),
+    75% 100%, 70% calc(100% - 5px), 65% 100%, 60% calc(100% - 8px),
+    55% 100%, 50% calc(100% - 6px), 45% 100%, 40% calc(100% - 7px),
+    35% 100%, 30% calc(100% - 5px), 25% 100%, 20% calc(100% - 8px),
+    15% 100%, 10% calc(100% - 6px), 5% 100%, 0% calc(100% - 7px)
+  );
+}
+
+.torn-top {
+  clip-path: polygon(
+    0% 8px,
+    5% 0px, 10% 6px, 15% 0px, 20% 7px,
+    25% 0px, 30% 5px, 35% 0px, 40% 7px,
+    45% 0px, 50% 6px, 55% 0px, 60% 8px,
+    65% 0px, 70% 5px, 75% 0px, 80% 7px,
+    85% 0px, 90% 6px, 95% 0px, 100% 8px,
+    100% 100%,
+    0% 100%
+  );
+}
+
+/* Highlighting marker effect */
+.marker-highlight {
+  position: relative;
+  display: inline-block;
+}
+.marker-highlight::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 2px;
+  height: 45%;
+  background-color: rgba(254, 247, 218, 0.85);
+  z-index: -1;
+  transform: rotate(-1deg);
+  border-radius: 4px;
+}
+
+.marker-highlight-pink::before {
+  background-color: rgba(252, 235, 235, 0.9);
+}
+
+.marker-highlight-mint::before {
+  background-color: rgba(238, 243, 235, 0.9);
+}
+
+/* Dog-ear fold */
+.dog-ear {
+  background: linear-gradient(135deg, transparent 20px, #FAF5EB 20px);
+  position: relative;
+}
+.dog-ear::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #EADBC8 50%, #3C3530 50%, #3C3530 55%, transparent 55%);
+}
+
+/* Bottom right dog ear */
+.dog-ear-br {
+  position: relative;
+}
+.dog-ear-br-fold {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(315deg, #FAF5EB 50%, #EADBC8 50%);
+  border-top: 2px solid #3C3530;
+  border-left: 2px solid #3C3530;
+  border-bottom-right-radius: 8px;
+  box-shadow: -2px -2px 3px rgba(60, 53, 48, 0.15);
+}
+
+/* Handwritten scribble strike */
+.scribble-strike {
+  position: relative;
+}
+.scribble-strike::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 3px;
+  background-color: #E27B7B;
+  transform: rotate(-2deg);
+  border-radius: 2px;
+}
