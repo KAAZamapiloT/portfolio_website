@@ -251,7 +251,7 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     icon: "⭐",
     bulletPoints: [
       "Secured 2nd Place in HACKIIITV, a hackathon conducted at IIIT Vadodara.",
-      "Engineered an innovative technical solution under strict 24-hour hackathon constraints."
+      "Engineered an innovative technical solution under intense 36-hour hackathon constraints."
     ]
   },
   {
