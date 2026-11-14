@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { SpiralBinding } from './SpiralBinding';
-import { PostageStamp } from './PostageStamp';
 import { PERSONAL_INFO } from '../data/portfolioData';
+import { Decoration } from './Decorations';
 import { playCutePop, playCelebrationChime } from '../utils/audio';
 import confetti from 'canvas-confetti';
 
@@ -17,7 +16,7 @@ export const ContactNotebook: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill in your name, email, and message! ✎");
+      alert("Please enter your name, email, and message.");
       return;
     }
 
@@ -33,155 +32,146 @@ export const ContactNotebook: React.FC = () => {
         particleCount: 50,
         spread: 70,
         origin: { y: 0.7 },
-        colors: ['#FCEBEB', '#F1EBF5', '#EEF3EB', '#FEF7DA', '#E27B7B'],
+        colors: ['#FF8FC1', '#BFA8FF', '#9FE8CF', '#FFE98A', '#9FD8FF', '#FF5C9D'],
       });
-    }, 600);
+    }, 500);
   };
 
   return (
-    <section id="contact" className="relative mb-14 select-none">
-      <div className="relative bg-[#FAF5EB] border-2 md:border-[3px] border-[#3C3530] shadow-[6px_6px_0px_#3C3530] rounded-2xl md:rounded-3xl p-5 md:p-8">
-        {/* Section Title */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-dashed border-[#3C3530]/20 pb-4 mb-6">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-[#E27B7B]">
-              <span>💌 ⋆ ✎</span>
-              <span>send a letter, collaborate or say hi</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#3C3530] flex items-center gap-2">
-              <span>Notebook Contact</span>
-              <span className="text-xl">🌸</span>
-            </h2>
-          </div>
+    <div className="window-wrap">
+      <section className="window" id="contact">
+        <header className="window__bar">
+          <span className="window__title">NET.CONNECT // CONTACT PAD</span>
+          <span className="dots" aria-hidden="true">
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
+        </header>
 
-          <div className="flex items-center gap-2">
-            <PostageStamp icon="💌" label="MAIL" price="✿ 1st" color="#FCEBEB" />
-          </div>
-        </div>
-
-        {/* Content Layout: Left Information & Doodles, Right Spiral Pad Insert */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Info & Sticky Notes */}
-          <div className="lg:col-span-5 text-left space-y-4">
-            <div className="bg-[#FEF7DA] p-5 rounded-2xl border-2 border-[#3C3530] shadow-[3px_3px_0px_#3C3530] rotate-[-1deg]">
-              <h3 className="font-extrabold text-lg text-[#3C3530] mb-2 flex items-center gap-2">
-                <span>📬</span>
-                <span>Direct Mailbox</span>
-              </h3>
-              <p className="text-sm text-[#3C3530]/90 mb-3">
-                whether you want to discuss systems programming, C++ custom allocators, research collaborations, or full-time / internship opportunities—my inbox is always open!
-              </p>
-              <div className="space-y-1.5 font-mono text-xs">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold">email:</span>
-                  <a href={`mailto:${PERSONAL_INFO.email}`} className="underline text-[#E27B7B] font-bold">
-                    {PERSONAL_INFO.email}
-                  </a>
-                </div>
+        <div className="window__body">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start text-left">
+            {/* Left Column: Direct Info Card */}
+            <div className="lg:col-span-5 space-y-4">
+              <div className="card card--yellow">
                 <div>
-                  <span className="font-bold">location:</span> {PERSONAL_INFO.location}
-                </div>
-                <div>
-                  <span className="font-bold">campus:</span> {PERSONAL_INFO.institution}
-                </div>
-              </div>
-            </div>
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="label text-xs" style={{ color: 'var(--purple-d)' }}>
+                      DIRECT_CHANNEL
+                    </span>
+                    <span className="badge" style={{ width: 34, height: 34, fontSize: '0.9rem' }}>
+                      ✉
+                    </span>
+                  </div>
 
-            {/* Quick Stamps Container */}
-            <div className="bg-[#FAF5EB] p-4 rounded-xl border-2 border-[#3C3530] shadow-[2px_2px_0px_#3C3530] flex flex-wrap items-center justify-around gap-2">
-              <a
-                href={PERSONAL_INFO.github}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:scale-105 transition-transform"
-              >
-                <PostageStamp icon="🐙" label="GITHUB" price="★ FREE" color="#FAF5EB" />
-              </a>
-              <a
-                href={PERSONAL_INFO.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:scale-105 transition-transform"
-              >
-                <PostageStamp icon="💼" label="LINKEDIN" price="★ NET" color="#EBF4F5" />
-              </a>
-              <a
-                href="/RESUME_Q-1.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:scale-105 transition-transform"
-              >
-                <PostageStamp icon="📄" label="RESUME" price="★ PDF" color="#EEF3EB" />
-              </a>
-            </div>
-          </div>
+                  <h3 className="text-xl font-bold mb-2">
+                    Direct Mailbox
+                  </h3>
 
-          {/* Right: The Exact Spiral Pad Insert from the Mockup */}
-          <div className="lg:col-span-7">
-            <div className="relative bg-white rounded-2xl border-2 md:border-[3px] border-[#3C3530] shadow-[5px_5px_0px_#3C3530] overflow-hidden">
-              {/* Spiral rings on the left edge of this insert pad */}
-              <div className="absolute left-0 top-0 bottom-0 w-8 z-20 bg-[#F5EFE6] border-r-2 border-[#3C3530] flex flex-col justify-around py-3">
-                <SpiralBinding count={10} />
-              </div>
+                  <p className="text-sm font-medium mb-3">
+                    Whether you want to discuss systems programming, custom memory allocators, real-time UE5 scene pipelines, or engineering opportunities—my inbox is open.
+                  </p>
 
-              {/* Pad inner content (with left padding for spiral rings) */}
-              <div className="pl-12 pr-6 py-6 text-left relative bg-lined-paper min-h-[380px] flex flex-col justify-between">
-                {/* Dog-eared bottom-right corner with smiley face */}
-                <div className="absolute bottom-0 right-0 w-12 h-12 pointer-events-none">
-                  {/* Fold triangle */}
-                  <div className="absolute bottom-0 right-0 w-0 h-0 border-b-[48px] border-b-[#EADBC8] border-l-[48px] border-l-transparent drop-shadow-[-2px_-2px_2px_rgba(0,0,0,0.15)]" />
-                  <div className="absolute bottom-1 right-2 text-xs font-bold text-[#3C3530] select-none rotate-[-45deg]">
-                    ( ◠‿◠ )
+                  <div className="card__inset space-y-2 text-xs font-mono" style={{ background: 'var(--paper)' }}>
+                    <div>
+                      <span className="label block text-[10px]" style={{ color: 'var(--purple-d)' }}>EMAIL:</span>
+                      <a href={`mailto:${PERSONAL_INFO.email}`} className="font-bold">
+                        {PERSONAL_INFO.email}
+                      </a>
+                    </div>
+                    <div>
+                      <span className="label block text-[10px]" style={{ color: 'var(--purple-d)' }}>LOCATION:</span>
+                      <span className="font-bold">{PERSONAL_INFO.location}</span>
+                    </div>
+                    <div>
+                      <span className="label block text-[10px]" style={{ color: 'var(--purple-d)' }}>CAMPUS:</span>
+                      <span className="font-bold">{PERSONAL_INFO.institution}</span>
+                    </div>
                   </div>
                 </div>
 
+                <div className="flex flex-wrap gap-2 pt-2 border-t border-[var(--ink)]/20">
+                  <a
+                    href={PERSONAL_INFO.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn--secondary"
+                    style={{ padding: '6px 14px', fontSize: '0.78rem' }}
+                  >
+                    <span>github</span>
+                  </a>
+                  <a
+                    href={PERSONAL_INFO.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn--secondary"
+                    style={{ padding: '6px 14px', fontSize: '0.78rem' }}
+                  >
+                    <span>linkedin</span>
+                  </a>
+                  <a
+                    href="/RESUME_Q-1.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn--secondary"
+                    style={{ padding: '6px 14px', fontSize: '0.78rem' }}
+                  >
+                    <span>resume.pdf</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Terminal Form Card */}
+            <div className="lg:col-span-7">
+              <div className="card card--lavender">
                 <div>
-                  {/* Title */}
-                  <div className="flex items-center justify-between border-b-2 border-[#3C3530] pb-2 mb-4">
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-[#3C3530] tracking-tight">
-                      Contact Form <span className="text-sm font-normal text-[#3C3530]/60 font-mono">✎</span>
+                  <div className="flex items-center justify-between mb-3 border-b border-[var(--ink)]/30 pb-2">
+                    <h3 className="text-xl font-bold m-0">
+                      Send a Message
                     </h3>
-                    <span className="text-xs font-mono text-[#3C3530]/60">tear-away pad</span>
+                    <span className="tag" style={{ background: 'var(--paper)', fontSize: '0.7rem' }}>
+                      FORM // v1.0
+                    </span>
                   </div>
 
                   {isSubmitted ? (
-                    <div className="py-12 text-center space-y-3">
-                      <div className="text-5xl animate-bounce">💌</div>
-                      <h4 className="text-2xl font-bold text-[#3C3530]">message delivered! ✿</h4>
-                      <p className="text-sm text-[#3C3530]/80 font-mono max-w-sm mx-auto">
-                        thank you {formData.name}! your note has landed on uday's desk. i'll get back to you soon!
+                    <div className="card__inset py-8 text-center space-y-3" style={{ background: 'var(--paper)' }}>
+                      <div className="text-4xl">💌</div>
+                      <h4 className="text-xl font-bold">MESSAGE DISPATCHED!</h4>
+                      <p className="text-sm font-mono max-w-sm mx-auto" style={{ color: 'var(--purple-d)' }}>
+                        Thank you, {formData.name}. Your note has been received. I'll get back to you shortly.
                       </p>
                       <button
+                        type="button"
                         onClick={() => {
                           setIsSubmitted(false);
                           setFormData({ name: '', email: '', message: '' });
                         }}
-                        className="mt-4 px-4 py-1.5 bg-[#FEF7DA] border-2 border-[#3C3530] rounded-xl font-bold text-xs shadow-[2px_2px_0px_#3C3530]"
+                        className="btn"
+                        style={{ padding: '6px 16px', fontSize: '0.8rem' }}
                       >
-                        ✎ write another note
+                        WRITE ANOTHER &gt;&gt;
                       </button>
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-4">
-                      {/* Name input */}
                       <div>
-                        <label className="block text-xs sm:text-sm font-bold text-[#3C3530] mb-0.5">
-                          your name! ✎
+                        <label className="label block text-xs mb-1" style={{ color: 'var(--ink)' }}>
+                          YOUR NAME:
                         </label>
                         <input
                           type="text"
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="e.g. Ada Lovelace, Linus Torvalds..."
-                          className="w-full bg-transparent border-b-2 border-[#3C3530] px-1 py-1 text-sm font-medium text-[#3C3530] placeholder-[#3C3530]/40 focus:outline-none focus:border-[#E27B7B]"
+                          placeholder="e.g. Ada Lovelace, Linus Torvalds"
                         />
                       </div>
 
-                      {/* Email input */}
                       <div>
-                        <label className="block text-xs sm:text-sm font-bold text-[#3C3530] mb-0.5">
-                          email ✎
+                        <label className="label block text-xs mb-1" style={{ color: 'var(--ink)' }}>
+                          EMAIL ADDRESS:
                         </label>
                         <input
                           type="email"
@@ -189,50 +179,46 @@ export const ContactNotebook: React.FC = () => {
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="your.email@domain.com"
-                          className="w-full bg-transparent border-b-2 border-[#3C3530] px-1 py-1 text-sm font-medium text-[#3C3530] placeholder-[#3C3530]/40 focus:outline-none focus:border-[#E27B7B]"
                         />
                       </div>
 
-                      {/* Message input */}
                       <div>
-                        <label className="block text-xs sm:text-sm font-bold text-[#3C3530] mb-0.5">
-                          message ~
+                        <label className="label block text-xs mb-1" style={{ color: 'var(--ink)' }}>
+                          MESSAGE:
                         </label>
                         <textarea
                           required
-                          rows={3}
+                          rows={4}
                           value={formData.message}
                           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          placeholder="say hello, discuss low-latency systems or send a doodle..."
-                          className="w-full bg-transparent border-b-2 border-[#3C3530] px-1 py-1 text-sm font-medium text-[#3C3530] placeholder-[#3C3530]/40 focus:outline-none focus:border-[#E27B7B] resize-none"
+                          placeholder="Inquire about systems projects, performance engineering, or say hello..."
                         />
                       </div>
 
-                      {/* Submit Button */}
-                      <div className="pt-2">
+                      <div className="pt-1">
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="px-6 py-2 bg-[#FCEBEB] hover:bg-[#FAD9D9] border-2 md:border-[3px] border-[#3C3530] rounded-full font-extrabold text-sm sm:text-base shadow-[3px_3px_0px_#3C3530] hover:scale-105 active:scale-95 transition-all flex items-center gap-2 group"
+                          className="btn"
                         >
-                          <span className="group-hover:scale-125 transition-transform text-[#E27B7B]">♡</span>
-                          <span>{isSubmitting ? 'Sending...' : 'Submit'}</span>
-                          <span className="text-xs font-normal text-[#3C3530]/60 font-mono">✿</span>
+                          <span>{isSubmitting ? 'DISPATCHING...' : 'DISPATCH MESSAGE >>'}</span>
                         </button>
                       </div>
                     </form>
                   )}
                 </div>
 
-                <div className="pt-4 text-[11px] font-mono text-[#3C3530]/60 flex items-center gap-1">
-                  <span>✎</span>
-                  <span>auto-dispatched with love and zero heap allocation</span>
+                <div className="text-[11px] font-mono pt-2 border-t border-[var(--ink)]/20" style={{ color: 'var(--purple-d)' }}>
+                  [SECURE] Encrypted client-side dispatch with zero heap bloat.
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Decorative Sparkle SVG on top-right */}
+      <Decoration position="top-right" type="sparkle" />
+    </div>
   );
 };

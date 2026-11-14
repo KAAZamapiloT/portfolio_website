@@ -31,14 +31,13 @@ export const SqlDemo: React.FC = () => {
       const newId = Math.floor(Math.random() * 9000) + 1000;
       setOutput((prev) => [
         ...prev,
-        { id: newId, name: 'kawaii_record', role: 'in_memory_slotted', latencyUs: 0.22 }
+        { id: newId, name: 'slotted_record', role: 'in_memory_slotted', latencyUs: 0.22 }
       ]);
       setBTreeStats((prev) => ({
         ...prev,
         indexedRecords: prev.indexedRecords + 1
       }));
     } else if (q.includes('BENCHMARK') || q.includes('EXPLAIN')) {
-      // Refresh with low latency benchmarks
       setBTreeStats({
         depth: 3,
         indexedRecords: 124801,
@@ -49,71 +48,72 @@ export const SqlDemo: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FAF5EB] p-4 rounded-xl border-2 border-[#3C3530] text-left text-sm font-mono">
-      <div className="flex justify-between items-center mb-2 border-b border-[#3C3530]/20 pb-2">
-        <span className="font-bold flex items-center gap-1.5 text-xs text-[#3C3530] font-sans">
+    <div className="card__inset text-left space-y-3 font-mono" style={{ background: 'var(--paper)' }}>
+      <div className="flex justify-between items-center border-b border-[var(--ink)]/20 pb-2">
+        <span className="label text-xs flex items-center gap-1.5" style={{ color: 'var(--ink)' }}>
           <span>💎</span>
           <span>QuartzDB Terminal & B+ Tree Inspector</span>
         </span>
-        <span className="text-[10px] bg-[#FCEBEB] px-2 py-0.5 rounded border border-[#3C3530]/30 font-bold">
+        <span className="tag" style={{ background: 'var(--sky)', fontSize: '0.7rem' }}>
           4KB Slotted Page Engine
         </span>
       </div>
 
       {/* Stats bar */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-2 text-[10px]">
-        <div className="bg-[#EADBC8]/30 p-1.5 rounded border border-[#3C3530]/20">
-          <span className="text-[#3C3530]/60 block">B+ Tree Depth</span>
-          <span className="font-bold text-[#3C3530] text-xs">{bTreeStats.depth} (O(log n))</span>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px]">
+        <div className="p-1.5 rounded border border-[var(--ink)]/30" style={{ background: 'var(--cream)' }}>
+          <span className="block" style={{ color: 'var(--purple-d)' }}>B+ Tree Depth</span>
+          <span className="font-bold text-xs" style={{ color: 'var(--ink)' }}>{bTreeStats.depth} (O(log n))</span>
         </div>
-        <div className="bg-[#EADBC8]/30 p-1.5 rounded border border-[#3C3530]/20">
-          <span className="text-[#3C3530]/60 block">Indexed Records</span>
-          <span className="font-bold text-[#3C3530] text-xs">{bTreeStats.indexedRecords.toLocaleString()}</span>
+        <div className="p-1.5 rounded border border-[var(--ink)]/30" style={{ background: 'var(--cream)' }}>
+          <span className="block" style={{ color: 'var(--purple-d)' }}>Indexed Records</span>
+          <span className="font-bold text-xs" style={{ color: 'var(--ink)' }}>{bTreeStats.indexedRecords.toLocaleString()}</span>
         </div>
-        <div className="bg-[#EADBC8]/30 p-1.5 rounded border border-[#3C3530]/20">
-          <span className="text-[#3C3530]/60 block">Page Size</span>
-          <span className="font-bold text-[#3C3530] text-xs">{bTreeStats.pageSize}</span>
+        <div className="p-1.5 rounded border border-[var(--ink)]/30" style={{ background: 'var(--cream)' }}>
+          <span className="block" style={{ color: 'var(--purple-d)' }}>Page Format</span>
+          <span className="font-bold text-xs" style={{ color: 'var(--ink)' }}>{bTreeStats.pageSize}</span>
         </div>
-        <div className="bg-[#EADBC8]/30 p-1.5 rounded border border-[#3C3530]/20">
-          <span className="text-[#3C3530]/60 block">Query Latency</span>
-          <span className="font-bold text-[#3C3530] text-xs">&lt; 0.45 ms</span>
+        <div className="p-1.5 rounded border border-[var(--ink)]/30" style={{ background: 'var(--cream)' }}>
+          <span className="block" style={{ color: 'var(--purple-d)' }}>Query Latency</span>
+          <span className="font-bold text-xs" style={{ color: 'var(--ink)' }}>&lt; 0.45 ms</span>
         </div>
       </div>
 
       {/* SQL Query Form */}
-      <form onSubmit={handleRunQuery} className="flex gap-2 mb-2">
+      <form onSubmit={handleRunQuery} className="flex gap-2">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="flex-1 bg-white border-2 border-[#3C3530] rounded-lg px-2.5 py-1 text-xs text-[#3C3530] focus:outline-none focus:ring-1 focus:ring-[#3C3530] shadow-inner font-mono"
+          style={{ padding: '8px 12px', fontSize: '0.82rem' }}
         />
         <button
           type="submit"
-          className="px-3 py-1 bg-[#FCEBEB] hover:bg-[#FAD9D9] border-2 border-[#3C3530] rounded-lg font-bold text-xs shadow-[2px_2px_0px_#3C3530] active:translate-x-0.5 active:translate-y-0.5 transition-all font-sans"
+          className="btn"
+          style={{ padding: '8px 16px', fontSize: '0.8rem', whiteSpace: 'nowrap' }}
         >
           Execute ⏎
         </button>
       </form>
 
       {/* Output Table */}
-      <div className="border border-[#3C3530]/30 rounded-lg overflow-hidden bg-white text-[11px]">
-        <table className="w-full text-left">
-          <thead className="bg-[#FAF5EB] border-b border-[#3C3530]/30 text-[#3C3530]/70 font-bold">
+      <div className="border-2 border-[var(--ink)] rounded-lg overflow-hidden" style={{ background: 'var(--cream)' }}>
+        <table className="w-full text-left text-[11px]">
+          <thead className="border-b border-[var(--ink)] font-bold" style={{ background: 'var(--lavender)', color: 'var(--ink)' }}>
             <tr>
-              <th className="py-1 px-2">KEY_ID</th>
-              <th className="py-1 px-2">NAME</th>
-              <th className="py-1 px-2">PAGE_OFFSET</th>
-              <th className="py-1 px-2">LATENCY</th>
+              <th className="py-1 px-2.5">KEY_ID</th>
+              <th className="py-1 px-2.5">NAME</th>
+              <th className="py-1 px-2.5">PAGE_OFFSET</th>
+              <th className="py-1 px-2.5">LATENCY</th>
             </tr>
           </thead>
           <tbody>
             {output.map((row) => (
-              <tr key={row.id} className="border-b border-[#3C3530]/10 hover:bg-[#FDFBF7]">
-                <td className="py-1 px-2 font-bold">{row.id}</td>
-                <td className="py-1 px-2">{row.name}</td>
-                <td className="py-1 px-2 text-[#3C3530]/60">0x{(row.id * 16).toString(16)}</td>
-                <td className="py-1 px-2 text-emerald-700 font-bold">{row.latencyUs} μs</td>
+              <tr key={row.id} className="border-b border-[var(--ink)]/20">
+                <td className="py-1 px-2.5 font-bold">{row.id}</td>
+                <td className="py-1 px-2.5">{row.name}</td>
+                <td className="py-1 px-2.5" style={{ color: 'var(--purple-d)' }}>0x{(row.id * 16).toString(16)}</td>
+                <td className="py-1 px-2.5 font-bold" style={{ color: 'var(--ink)' }}>{row.latencyUs} μs</td>
               </tr>
             ))}
           </tbody>
@@ -121,28 +121,29 @@ export const SqlDemo: React.FC = () => {
       </div>
 
       {/* Preset quick queries */}
-      <div className="flex flex-wrap gap-1.5 mt-2 text-[10px]">
-        <span className="text-[#3C3530]/60 font-sans">Quick tests:</span>
+      <div className="flex flex-wrap gap-2 text-[10px] items-center">
+        <span className="label text-[10px]" style={{ color: 'var(--purple-d)' }}>Tests:</span>
         <button
           type="button"
-          onClick={() => { setQuery("INSERT INTO kv_store VALUES ('custom_alloc', 2026);"); handleRunQuery(); }}
-          className="underline hover:text-[#E27B7B]"
+          onClick={() => { setQuery("INSERT INTO kv_store VALUES ('slotted_page', 2026);"); handleRunQuery(); }}
+          className="nav-pill__link"
+          style={{ padding: '2px 8px', fontSize: '0.7rem', border: '1px solid var(--ink)' }}
         >
           INSERT record
         </button>
-        <span>•</span>
         <button
           type="button"
           onClick={() => { setQuery("EXPLAIN BTREE;"); handleRunQuery(); }}
-          className="underline hover:text-[#E27B7B]"
+          className="nav-pill__link"
+          style={{ padding: '2px 8px', fontSize: '0.7rem', border: '1px solid var(--ink)' }}
         >
           EXPLAIN BTree
         </button>
-        <span>•</span>
         <button
           type="button"
           onClick={() => { setQuery("BENCHMARK LOOKUP;"); handleRunQuery(); }}
-          className="underline hover:text-[#E27B7B]"
+          className="nav-pill__link"
+          style={{ padding: '2px 8px', fontSize: '0.7rem', border: '1px solid var(--ink)' }}
         >
           120k Benchmark
         </button>

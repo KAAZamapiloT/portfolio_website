@@ -14,7 +14,7 @@ export const RasterizerDemo: React.FC = () => {
   const [fov, setFov] = useState(250);
   const rotAngle = useRef({ x: 0.4, y: 0.6 });
 
-  // 3D Gem / Diamond vertices
+  // 3D Gem / Polyhedron vertices
   const vertices: Point3D[] = [
     { x: 0, y: -50, z: 0 },    // Top vertex (0)
     { x: -35, y: -10, z: -35 }, // Upper ring (1)
@@ -26,15 +26,14 @@ export const RasterizerDemo: React.FC = () => {
 
   // Faces (triangles)
   const faces = [
-    // Top crown
     [0, 1, 2], [0, 2, 3], [0, 3, 4], [0, 4, 1],
-    // Bottom pavilion
     [5, 2, 1], [5, 3, 2], [5, 4, 3], [5, 1, 4]
   ];
 
+  // Retro-Kawaii pastel face colors
   const faceColors = [
-    '#FCEBEB', '#F1EBF5', '#EBF4F5', '#EEF3EB',
-    '#F9EFE4', '#FEF7DA', '#FCEBEB', '#F1EBF5'
+    '#9FE8CF', '#FFE98A', '#9FD8FF', '#FF8FC1',
+    '#BFA8FF', '#FFF0F7', '#9FE8CF', '#FF8FC1'
   ];
 
   useEffect(() => {
@@ -54,24 +53,18 @@ export const RasterizerDemo: React.FC = () => {
       const height = canvas.height;
       ctx.clearRect(0, 0, width, height);
 
-      // Background paper tone
-      ctx.fillStyle = '#FAF5EB';
+      // Background
+      ctx.fillStyle = '#FFF0F7';
       ctx.fillRect(0, 0, width, height);
 
-      // Cute graph grid lines
-      ctx.strokeStyle = 'rgba(60, 53, 48, 0.08)';
-      ctx.lineWidth = 1;
-      for (let x = 0; x < width; x += 16) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-      for (let y = 0; y < height; y += 16) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
+      // Grid dots
+      ctx.fillStyle = 'rgba(59, 35, 80, 0.15)';
+      for (let x = 10; x < width; x += 18) {
+        for (let y = 10; y < height; y += 18) {
+          ctx.beginPath();
+          ctx.arc(x, y, 1, 0, Math.PI * 2);
+          ctx.fill();
+        }
       }
 
       const ax = rotAngle.current.x;
@@ -99,7 +92,7 @@ export const RasterizerDemo: React.FC = () => {
         return { px, py, pz, origZ: z2 };
       });
 
-      // Calculate face average Z for Painter's Algorithm sorting (Z-buffer)
+      // Painter's Algorithm sorting
       const sortedFaces = faces.map((indices, idx) => {
         const avgZ = (projected[indices[0]].origZ + projected[indices[1]].origZ + projected[indices[2]].origZ) / 3;
         return { indices, avgZ, color: faceColors[idx % faceColors.length] };
@@ -113,7 +106,7 @@ export const RasterizerDemo: React.FC = () => {
 
         // Normal check for backface culling
         const normalZ = (p1.px - p0.px) * (p2.py - p0.py) - (p1.py - p0.py) * (p2.px - p0.px);
-        if (normalZ < 0) return; // Cull backface!
+        if (normalZ < 0) return;
 
         ctx.beginPath();
         ctx.moveTo(p0.px, p0.py);
@@ -126,18 +119,20 @@ export const RasterizerDemo: React.FC = () => {
           ctx.fill();
         }
 
-        // Sketchy pencil border
-        ctx.strokeStyle = '#3C3530';
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#3B2350';
+        ctx.lineWidth = 2.5;
         ctx.stroke();
       });
 
-      // Draw vertex sparkles
+      // Draw vertex sparkles in var(--hot-pink)
       projected.forEach((p) => {
-        ctx.fillStyle = '#E27B7B';
+        ctx.fillStyle = '#FF5C9D';
         ctx.beginPath();
-        ctx.arc(p.px, p.py, 2.5, 0, Math.PI * 2);
+        ctx.arc(p.px, p.py, 3, 0, Math.PI * 2);
         ctx.fill();
+        ctx.strokeStyle = '#3B2350';
+        ctx.lineWidth = 1;
+        ctx.stroke();
       });
 
       animId = requestAnimationFrame(render);
@@ -148,22 +143,25 @@ export const RasterizerDemo: React.FC = () => {
   }, [isRotating, wireframeOnly, fov]);
 
   return (
-    <div className="bg-[#FAF5EB] p-4 rounded-xl border-2 border-[#3C3530] text-left text-sm">
-      <div className="flex justify-between items-center mb-2 border-b border-[#3C3530]/20 pb-2">
-        <span className="font-bold flex items-center gap-1.5 text-xs text-[#3C3530]">
+    <div className="card__inset text-left space-y-3" style={{ background: 'var(--paper)' }}>
+      <div className="flex justify-between items-center border-b border-[var(--ink)]/20 pb-2">
+        <span className="label text-xs flex items-center gap-1.5" style={{ color: 'var(--ink)' }}>
           <span>🎨</span>
           <span>Pixel 3D CPU Rasterizer Engine</span>
         </span>
-        <span className="text-[11px] font-mono bg-[#F1EBF5] px-2 py-0.5 rounded border border-[#3C3530]/30 font-bold">
+        <span className="tag" style={{ background: 'var(--pink)', fontSize: '0.7rem' }}>
           Frustum & Z-Buffer: Active
         </span>
       </div>
 
       <div className="flex flex-col sm:flex-row items-center gap-4">
         {/* Software Framebuffer Canvas */}
-        <div className="relative border-2 border-[#3C3530] rounded-lg shadow-[3px_3px_0px_#3C3530] overflow-hidden">
-          <canvas ref={canvasRef} width={220} height={170} className="block cursor-grab active:cursor-grabbing" />
-          <div className="absolute top-1.5 left-2 bg-[#FAF5EB]/90 px-1.5 py-0.5 rounded text-[10px] font-mono border border-[#3C3530]/40 font-bold">
+        <div className="relative border-2 border-[var(--ink)] rounded-lg shadow-[2px_2px_0px_var(--ink)] overflow-hidden">
+          <canvas ref={canvasRef} width={220} height={160} className="block cursor-grab active:cursor-grabbing" />
+          <div
+            className="absolute top-1.5 left-2 px-1.5 py-0.5 rounded text-[10px] font-mono border border-[var(--ink)] font-bold"
+            style={{ background: 'var(--paper)', color: 'var(--ink)' }}
+          >
             FPS: 60 (CPU)
           </div>
         </div>
@@ -171,35 +169,39 @@ export const RasterizerDemo: React.FC = () => {
         {/* Controls */}
         <div className="flex-1 space-y-2 text-xs">
           <div className="flex items-center justify-between">
-            <span className="font-bold text-[#3C3530]">Spin 3D Gem:</span>
+            <span className="label text-xs" style={{ color: 'var(--ink)' }}>Spin Model:</span>
             <button
+              type="button"
               onClick={() => {
                 playCutePop(750);
                 setIsRotating(!isRotating);
               }}
-              className="px-2 py-0.5 bg-[#FAF5EB] border border-[#3C3530] rounded shadow-[1px_1px_0px_#3C3530] font-bold"
+              className="btn btn--secondary"
+              style={{ padding: '4px 10px', fontSize: '0.75rem' }}
             >
               {isRotating ? '⏸ Pause' : '▶ Spin'}
             </button>
           </div>
 
           <div className="flex items-center justify-between">
-            <span className="font-bold text-[#3C3530]">Render Mode:</span>
+            <span className="label text-xs" style={{ color: 'var(--ink)' }}>Render Mode:</span>
             <button
+              type="button"
               onClick={() => {
                 playCutePop(800);
                 setWireframeOnly(!wireframeOnly);
               }}
-              className="px-2 py-0.5 bg-[#FAF5EB] border border-[#3C3530] rounded shadow-[1px_1px_0px_#3C3530] font-bold"
+              className="btn btn--secondary"
+              style={{ padding: '4px 10px', fontSize: '0.75rem' }}
             >
-              {wireframeOnly ? '🎨 Shaded Faces' : '📐 Wireframe'}
+              {wireframeOnly ? '🎨 Shaded' : '📐 Wireframe'}
             </button>
           </div>
 
           <div>
-            <div className="flex justify-between text-[11px] font-mono">
-              <span>Zoom / Focal Length:</span>
-              <span>{fov}</span>
+            <div className="flex justify-between text-[11px] font-mono" style={{ color: 'var(--purple-d)' }}>
+              <span>Focal Length / Zoom:</span>
+              <span className="font-bold" style={{ color: 'var(--ink)' }}>{fov}</span>
             </div>
             <input
               type="range"
@@ -207,12 +209,12 @@ export const RasterizerDemo: React.FC = () => {
               max="350"
               value={fov}
               onChange={(e) => setFov(Number(e.target.value))}
-              className="w-full accent-[#3C3530] cursor-pointer"
+              style={{ padding: 0, height: '8px', cursor: 'pointer' }}
             />
           </div>
 
-          <p className="text-[11px] text-[#3C3530]/70 font-mono leading-tight pt-1">
-            ✨ Pure software rendering without OpenGL/DirectX. Math: <code>Screen = ViewPort × Projection × View × World</code>
+          <p className="text-[11px] font-mono leading-tight pt-1 m-0" style={{ color: 'var(--purple-d)' }}>
+            ✨ Pure software rendering without GPU APIs. Projection: <code>Screen = ViewPort × Projection × View × World</code>
           </p>
         </div>
       </div>

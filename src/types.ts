@@ -2,10 +2,10 @@ export interface Project {
   id: string;
   title: string;
   category: string;
-  bgColor: string;
-  accentColor: string;
-  stampText: string;
-  stampIcon: string;
+  badgeNum: string;
+  cardClass: string;
+  stampText?: string;
+  stampIcon?: string;
   shortDesc: string;
   longDesc: string;
   techStack: string[];

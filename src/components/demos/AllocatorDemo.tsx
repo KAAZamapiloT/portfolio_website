@@ -11,12 +11,14 @@ interface Block {
 
 export const AllocatorDemo: React.FC = () => {
   const [blocks, setBlocks] = useState<Block[]>([
-    { id: 1, type: 'linear', size: 32, offset: 0, color: '#FCEBEB' },
-    { id: 2, type: 'linear', size: 64, offset: 32, color: '#F1EBF5' },
-    { id: 3, type: 'pool', size: 48, offset: 96, color: '#EEF3EB' },
+    { id: 1, type: 'linear', size: 32, offset: 0, color: 'var(--yellow)' },
+    { id: 2, type: 'linear', size: 64, offset: 32, color: 'var(--mint)' },
+    { id: 3, type: 'pool', size: 48, offset: 96, color: 'var(--sky)' },
   ]);
   const [totalAllocated, setTotalAllocated] = useState(144);
-  const [heapCalls, setHeapCalls] = useState(0);
+  const [heapCalls] = useState(0);
+
+  const colors = ['var(--yellow)', 'var(--mint)', 'var(--sky)', 'var(--pink)', 'var(--lavender)'];
 
   const handleAllocLinear = () => {
     playCutePop(850);
@@ -30,7 +32,7 @@ export const AllocatorDemo: React.FC = () => {
       type: 'linear',
       size,
       offset: totalAllocated,
-      color: ['#FCEBEB', '#F1EBF5', '#EEF3EB', '#F9EFE4', '#FEF7DA'][blocks.length % 5],
+      color: colors[blocks.length % colors.length],
     };
     setBlocks([...blocks, newBlock]);
     setTotalAllocated((prev) => prev + size);
@@ -48,7 +50,7 @@ export const AllocatorDemo: React.FC = () => {
       type: 'pool',
       size,
       offset: totalAllocated,
-      color: '#EEF3EB',
+      color: 'var(--mint)',
     };
     setBlocks([...blocks, newBlock]);
     setTotalAllocated((prev) => prev + size);
@@ -58,73 +60,84 @@ export const AllocatorDemo: React.FC = () => {
     playPaperRustle();
     setBlocks([]);
     setTotalAllocated(0);
-    setHeapCalls(0);
   };
 
   return (
-    <div className="bg-[#FAF5EB] p-4 rounded-xl border-2 border-[#3C3530] text-left text-sm">
-      <div className="flex justify-between items-center mb-3 border-b border-[#3C3530]/20 pb-2">
-        <span className="font-bold flex items-center gap-1.5 text-xs text-[#3C3530]">
+    <div className="card__inset text-left space-y-3" style={{ background: 'var(--paper)' }}>
+      <div className="flex justify-between items-center border-b border-[var(--ink)]/20 pb-2">
+        <span className="label text-xs flex items-center gap-1.5" style={{ color: 'var(--ink)' }}>
           <span>⚡</span>
           <span>Volt Linear & Pool Arena Simulator</span>
         </span>
-        <span className="text-[11px] font-mono bg-[#EEF3EB] px-2 py-0.5 rounded border border-[#3C3530]/30 font-bold">
+        <span className="tag" style={{ background: 'var(--mint)', fontSize: '0.7rem' }}>
           Heap Calls: {heapCalls} (Zero!)
         </span>
       </div>
 
-      {/* Arena Memory Bar */}
-      <div className="mb-3">
-        <div className="flex justify-between text-[11px] font-mono text-[#3C3530]/70 mb-1">
+      <div>
+        <div className="flex justify-between text-[11px] font-mono mb-1" style={{ color: 'var(--purple-d)' }}>
           <span>0x0000 (Base)</span>
-          <span>{totalAllocated} / 384 Bytes Used</span>
+          <span className="font-bold" style={{ color: 'var(--ink)' }}>{totalAllocated} / 384 Bytes Used</span>
           <span>0x0180 (Limit)</span>
         </div>
-        <div className="h-8 w-full bg-[#EADBC8]/40 border-2 border-[#3C3530] rounded-lg p-0.5 flex gap-1 overflow-hidden relative shadow-inner">
+        <div
+          className="h-8 w-full rounded-lg p-0.5 flex gap-1 overflow-hidden relative"
+          style={{ background: 'var(--cream)', border: '2px solid var(--ink)' }}
+        >
           {blocks.map((b) => (
             <div
               key={b.id}
               style={{
                 width: `${(b.size / 384) * 100}%`,
                 backgroundColor: b.color,
+                border: '1.5px solid var(--ink)',
+                color: 'var(--ink)',
               }}
-              className="h-full border border-[#3C3530] rounded flex items-center justify-center text-[10px] font-mono font-bold text-[#3C3530] transition-all hover:scale-105 select-none"
+              className="h-full rounded flex items-center justify-center text-[10px] font-mono font-bold select-none"
               title={`${b.type.toUpperCase()}: ${b.size}B @ offset ${b.offset}`}
             >
               {b.size}B
             </div>
           ))}
           {totalAllocated < 384 && (
-            <div className="flex-1 flex items-center justify-center text-[10px] font-mono text-[#3C3530]/40 italic">
+            <div className="flex-1 flex items-center justify-center text-[10px] font-mono italic" style={{ color: 'var(--purple-d)' }}>
               [ free arena buffer ]
             </div>
           )}
         </div>
       </div>
 
-      {/* Buttons */}
       <div className="flex flex-wrap gap-2 pt-1">
         <button
+          type="button"
           onClick={handleAllocLinear}
-          className="px-3 py-1 bg-[#F9EFE4] hover:bg-[#F2DFC9] border-2 border-[#3C3530] rounded-lg font-bold shadow-[2px_2px_0px_#3C3530] active:translate-x-0.5 active:translate-y-0.5 transition-all text-xs"
+          className="btn btn--secondary"
+          style={{ padding: '6px 12px', fontSize: '0.75rem', background: 'var(--yellow)' }}
         >
           + Linear Alloc (32B)
         </button>
         <button
+          type="button"
           onClick={handleAllocPool}
-          className="px-3 py-1 bg-[#EEF3EB] hover:bg-[#DEEBD7] border-2 border-[#3C3530] rounded-lg font-bold shadow-[2px_2px_0px_#3C3530] active:translate-x-0.5 active:translate-y-0.5 transition-all text-xs"
+          className="btn btn--secondary"
+          style={{ padding: '6px 12px', fontSize: '0.75rem', background: 'var(--mint)' }}
         >
           + Pool Alloc (48B)
         </button>
         <button
+          type="button"
           onClick={handleReset}
-          className="px-3 py-1 bg-[#FAF5EB] hover:bg-[#EADBC8] border-2 border-[#3C3530] rounded-lg font-bold shadow-[2px_2px_0px_#3C3530] active:translate-x-0.5 active:translate-y-0.5 transition-all text-xs text-[#E27B7B]"
+          className="btn btn--secondary"
+          style={{ padding: '6px 12px', fontSize: '0.75rem', background: 'var(--pink)' }}
         >
           ↺ Reset Arena (O(1))
         </button>
       </div>
 
-      <div className="mt-2.5 text-[11px] text-[#3C3530]/70 font-mono bg-[#FAF5EB] p-1.5 rounded border border-[#3C3530]/20">
+      <div
+        className="p-2 rounded border border-[var(--ink)]/30 text-[11px] font-mono"
+        style={{ background: 'var(--cream)', color: 'var(--ink)' }}
+      >
         💡 <strong>Design:</strong> Linear allocator advances pointer with zero lock overhead. Reset drops high-water mark instantly in O(1) time without OS free() traversal.
       </div>
     </div>

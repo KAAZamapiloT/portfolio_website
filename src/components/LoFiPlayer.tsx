@@ -6,7 +6,7 @@ export const LoFiPlayer: React.FC = () => {
   const audioCtxRef = useRef<AudioContext | null>(null);
   const intervalRef = useRef<number | null>(null);
 
-  // Soothing pentatonic scale notes (C maj pentatonic)
+  // Pentatonic scale notes
   const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25];
 
   const playChiptuneNote = (freq: number) => {
@@ -18,7 +18,7 @@ export const LoFiPlayer: React.FC = () => {
     const gain = ctx.createGain();
     const filter = ctx.createBiquadFilter();
 
-    osc.type = 'triangle'; // warm retro sound
+    osc.type = 'triangle';
     osc.frequency.setValueAtTime(freq, ctx.currentTime);
 
     filter.type = 'lowpass';
@@ -75,24 +75,31 @@ export const LoFiPlayer: React.FC = () => {
 
   return (
     <div className="fixed bottom-4 right-4 z-40 select-none">
-      <div className="bg-[#FAF5EB] border-2 border-[#3C3530] shadow-[3px_3px_0px_#3C3530] rounded-2xl p-2.5 flex items-center gap-2 text-xs font-mono">
+      <div className="pill flex items-center gap-2.5 text-xs font-mono" style={{ padding: '8px 14px' }}>
         <button
+          type="button"
           onClick={handleToggleMusic}
-          className={`w-8 h-8 rounded-xl border-2 border-[#3C3530] flex items-center justify-center font-bold transition-all shadow-[1px_1px_0px_#3C3530] active:scale-90 ${
-            isPlaying ? 'bg-[#FEF7DA] text-[#3C3530]' : 'bg-[#FAF5EB]'
-          }`}
-          title={isPlaying ? 'Pause Lo-Fi Sketch Beat' : 'Play Lo-Fi Sketch Beat'}
+          className="badge"
+          style={{
+            width: 34,
+            height: 34,
+            fontSize: '0.9rem',
+            background: isPlaying ? 'var(--yellow)' : 'var(--mint)',
+            cursor: 'pointer',
+          }}
+          title={isPlaying ? 'Pause Lo-Fi Synth' : 'Play Lo-Fi Synth'}
+          aria-label={isPlaying ? 'Pause Lo-Fi Synth' : 'Play Lo-Fi Synth'}
         >
           {isPlaying ? '⏸' : '📻'}
         </button>
 
-        <div className="text-left hidden sm:block pr-1">
-          <div className="font-bold text-[#3C3530] flex items-center gap-1">
-            <span>lo-fi desk tape</span>
-            {isPlaying && <span className="animate-pulse text-[#E27B7B]">♪ ♫</span>}
+        <div className="text-left hidden sm:block">
+          <div className="label text-xs m-0 flex items-center gap-1.5" style={{ color: 'var(--ink)' }}>
+            <span>CHIPTUNE_RADIO</span>
+            {isPlaying && <span className="animate-pulse" style={{ color: 'var(--hot-pink)' }}>♪ ♫</span>}
           </div>
-          <div className="text-[10px] text-[#3C3530]/60">
-            {isPlaying ? 'playing cozy synth ~' : 'tap radio for music!'}
+          <div className="text-[10px]" style={{ color: 'var(--purple-d)' }}>
+            {isPlaying ? 'synthesizing lo-fi ~' : 'tap radio for music!'}
           </div>
         </div>
       </div>
