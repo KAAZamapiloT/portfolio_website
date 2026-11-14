@@ -110,13 +110,24 @@ export const ContactNotebook: React.FC = () => {
                     <span>linkedin</span>
                   </a>
                   <a
-                    href="/RESUME_Q-1.pdf"
+                    href="/UdaySingh_ResumeGameDev.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn--secondary"
+                    style={{ padding: '6px 14px', fontSize: '0.78rem', background: 'var(--yellow)' }}
+                    title="Download Game Dev Resume"
+                  >
+                    <span>📄 game dev resume</span>
+                  </a>
+                  <a
+                    href="/RESUME_cont.pdf"
                     target="_blank"
                     rel="noreferrer"
                     className="btn btn--secondary"
                     style={{ padding: '6px 14px', fontSize: '0.78rem' }}
+                    title="Download Systems Resume"
                   >
-                    <span>resume.pdf</span>
+                    <span>📄 systems resume</span>
                   </a>
                 </div>
               </div>

@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { playCutePop } from '../utils/audio';
 
 const DIALOGUES = [
-  { mood: 'ready', text: "welcome to my terminal! i'm uday, systems & graphics engineer.", emoji: "🌸" },
+  { mood: 'ready', text: "welcome to my terminal! i'm uday, game engine & systems programmer.", emoji: "🌸" },
+  { mood: 'gamedev', text: "developed polar bear: a first-person horror game in UE5 with C++ AI behavior trees!", emoji: "🐻‍❄️" },
+  { mood: 'engine', text: "building knightengine: modular C++ game engine with SDL3 and ECS architecture.", emoji: "⚙️" },
   { mood: 'ue5', text: "check out project canvas: real-time scene generation in UE5 with Groq API!", emoji: "🎬" },
-  { mood: 'systems', text: "all my systems projects run with zero heap bloat & deterministic cache lines.", emoji: "⚡" },
-  { mood: 'math', text: "pure software 3d rasterizer built from linear algebra first principles!", emoji: "📐" },
-  { mood: 'db', text: "quartzdb indexed 120,000+ records with sub-millisecond B+ tree lookups.", emoji: "💾" },
+  { mood: 'rasterizer', text: "pure software 3D rasterizer built from linear algebra first principles!", emoji: "📐" },
+  { mood: 'systems', text: "volt systems library: custom linear & pool allocators with zero heap calls in hot paths.", emoji: "⚡" },
 ];
 
 export const ChibiAvatar: React.FC = () => {

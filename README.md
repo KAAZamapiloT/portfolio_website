@@ -1,6 +1,6 @@
 # 🌸 Retro-Kawaii Terminal Developer Portfolio
 
-A developer portfolio website for **Uday Singh** (Systems & Low-Latency Performance Engineer, IIIT Vadodara 2023–2027) built using a strict **Retro-Kawaii Terminal** design system.
+A developer portfolio website for **Uday Singh** (Game Engine & Systems Programmer // C++ Developer, IIIT Vadodara 2023–2027) built using a strict **Retro-Kawaii Terminal** design system.
 
 ---
 
@@ -33,18 +33,29 @@ A developer portfolio website for **Uday Singh** (Systems & Low-Latency Performa
 
 ---
 
-## ⚡ Featured Engineering Projects
+## 🎮 Featured Game Development & Systems Projects
 
-- **Project CANVAS** (`C++`, `Unreal Engine 5`, `Groq API`):
+- **POLAR BEAR** (`C++`, `Unreal Engine 5`, `Behavior Trees`):
+  First-person horror game developed in Unreal Engine 5 with C++ gameplay systems for health/damage, inventory, key-based interactions, puzzles, hiding, and combat. Implemented enemy AI using Behavior Tree tasks, navigation queries, patrol/wandering, player tracking, chase, and attack states.
+- **Project Canvas** (`C++`, `Unreal Engine 5`, `Groq API`):
   LLM-driven real-time scene generation pipeline in UE5: natural language prompt ➔ strict JSON scene plan ➔ live lighting, volumetric fog, and actor spawning with a 5-tier asset resolver and 11-tier location query engine. Includes an interactive in-browser playground.
-- **Volt** (`C++20`, `Custom Allocators`):
-  Header-only C++ systems library featuring custom Linear and Pool allocators eliminating general-purpose heap allocations in hot paths, SPSC lock-free queues, and a concurrent ThreadPool.
-- **QuartzDB** (`C++17`, `B+ Tree`, `Storage Engine`):
-  Embedded storage engine using a 4KB slotted-page format, custom pager, and on-disk B+ Tree indexing across 120,000+ records with sub-millisecond query latency.
+- **KnightEngine** (`C++`, `SDL3`, `Engine Architecture`):
+  Modular C++ game engine with reusable windowing, logging, rendering, input, entity-component system (ECS), and fixed-timestep engine loop.
 - **Pixel** (`C++`, `SDL3`, `Software Rasterizer`):
-  Pure CPU software 3D rasterizer from mathematical first principles with 6-DOF camera, perspective projection, Z-buffering, and object-level frustum culling (2.25× speedup: 73.4ms → 32.6ms). Includes an interactive 3D canvas spinning model.
+  Pure CPU software 3D rasterizer from mathematical first principles with 6-DOF camera, perspective projection, Z-buffering, and object-level frustum culling. Includes an interactive 3D canvas spinning model.
+- **Volt** (`C++`, `Custom Allocators`):
+  Header-only C++ systems library featuring custom Linear and Pool allocators eliminating general-purpose heap allocations in hot paths, SPSC lock-free queues, and a concurrent ThreadPool.
 - **MNU-OS** (`C++`, `Linux Kernel Primitives`):
   Container runtime built directly from raw Linux namespaces and cgroups v2 primitives without Docker.
+- **QuartzDB** (`C++`, `Storage Engine`):
+  Embedded storage engine using a 4KB slotted-page format, custom pager, and on-disk B+ Tree indexing across 120,000+ records with sub-millisecond query latency.
+
+---
+
+## 📄 Resumes Available in `resumes/` & `public/`
+- **Game Dev Resume**: `UdaySingh_ResumeGameDev.pdf` (Primary)
+- **Systems & Container Resume**: `RESUME_cont.pdf`
+- **Storage & Systems Resume**: `RESUME_Q-1.pdf`
 
 ---
 
@@ -68,7 +79,7 @@ npm run build
 ```bash
 # Push to GitHub
 git add .
-git commit -m "feat: retro-kawaii terminal style transfer"
+git commit -m "feat: game dev & systems focus per resume updates"
 git push -u origin main
 ```
 Import the repository on [vercel.com](https://vercel.com) — Vite settings (`npm run build` ➔ `dist`) are auto-detected and ready for 1-click deployment.

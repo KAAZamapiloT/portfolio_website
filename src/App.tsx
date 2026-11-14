@@ -49,7 +49,7 @@ export function App() {
           </span>
           <span style={{ color: 'var(--purple-d)' }}>•</span>
           <span style={{ color: 'var(--purple-d)' }}>
-            C/C++ Systems &amp; Low-Latency Engineering
+            Game Engine &amp; Systems Programming // C++ Developer
           </span>
         </div>
         <div className="text-[11px] font-mono" style={{ color: 'var(--purple-d)' }}>

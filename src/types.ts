@@ -12,7 +12,7 @@ export interface Project {
   features: string[];
   benchmark?: string;
   githubUrl: string;
-  demoType: 'allocator' | 'rasterizer' | 'sql' | 'container' | 'canvas';
+  demoType: 'polarbear' | 'canvas' | 'engine' | 'rasterizer' | 'allocator' | 'sql' | 'container';
 }
 
 export interface SkillCategory {

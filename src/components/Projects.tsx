@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { PROJECTS } from '../data/portfolioData';
-import { AllocatorDemo } from './demos/AllocatorDemo';
+import { PolarBearDemo } from './demos/PolarBearDemo';
+import { CanvasDemo } from './demos/CanvasDemo';
+import { KnightEngineDemo } from './demos/KnightEngineDemo';
 import { RasterizerDemo } from './demos/RasterizerDemo';
+import { AllocatorDemo } from './demos/AllocatorDemo';
 import { SqlDemo } from './demos/SqlDemo';
 import { ContainerDemo } from './demos/ContainerDemo';
-import { CanvasDemo } from './demos/CanvasDemo';
 import { Decoration } from './Decorations';
 import { playCutePop } from '../utils/audio';
 
 export const Projects: React.FC = () => {
-  const [selectedDemoId, setSelectedDemoId] = useState<string | null>('project-canvas');
+  const [selectedDemoId, setSelectedDemoId] = useState<string | null>('polar-bear');
 
   const handleToggleDemo = (id: string) => {
     playCutePop(890);
@@ -20,7 +22,7 @@ export const Projects: React.FC = () => {
     <div className="window-wrap">
       <section className="window" id="projects">
         <header className="window__bar">
-          <span className="window__title">EXEC // FEATURED SYSTEMS PROJECTS</span>
+          <span className="window__title">EXEC // GAME ENGINES &amp; SYSTEMS PROJECTS</span>
           <span className="dots" aria-hidden="true">
             <i></i>
             <i></i>
@@ -61,7 +63,7 @@ export const Projects: React.FC = () => {
                     {proj.benchmark && (
                       <div className="card__inset mb-3" style={{ background: 'var(--paper)' }}>
                         <span className="label block text-[10px] mb-0.5" style={{ color: 'var(--purple-d)' }}>
-                          BENCHMARK // SPECS:
+                          SPECS // ARCHITECTURE:
                         </span>
                         <span className="font-bold text-xs" style={{ color: 'var(--ink)' }}>
                           ★ {proj.benchmark}
@@ -83,9 +85,11 @@ export const Projects: React.FC = () => {
                   <div>
                     {isDemoActive && (
                       <div className="mb-3">
+                        {proj.demoType === 'polarbear' && <PolarBearDemo />}
                         {proj.demoType === 'canvas' && <CanvasDemo />}
-                        {proj.demoType === 'allocator' && <AllocatorDemo />}
+                        {proj.demoType === 'engine' && <KnightEngineDemo />}
                         {proj.demoType === 'rasterizer' && <RasterizerDemo />}
+                        {proj.demoType === 'allocator' && <AllocatorDemo />}
                         {proj.demoType === 'sql' && <SqlDemo />}
                         {proj.demoType === 'container' && <ContainerDemo />}
                       </div>

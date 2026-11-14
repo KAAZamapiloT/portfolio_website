@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChibiAvatar } from './ChibiAvatar';
 import { Decoration } from './Decorations';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { PERSONAL_INFO, RESUMES } from '../data/portfolioData';
 import { playCutePop } from '../utils/audio';
 
 export const Hero: React.FC = () => {
@@ -17,7 +17,7 @@ export const Hero: React.FC = () => {
     <div className="window-wrap">
       <section className="window" id="hero">
         <header className="window__bar">
-          <span className="window__title">SYS.INIT // DEVELOPER PROFILE</span>
+          <span className="window__title">SYS.INIT // GAME &amp; SYSTEMS DEVELOPER PROFILE</span>
           <span className="dots" aria-hidden="true">
             <i></i>
             <i></i>
@@ -57,58 +57,71 @@ export const Hero: React.FC = () => {
 
                 <div className="pt-2 border-t border-[var(--ink)]/20 flex flex-wrap gap-2 text-xs">
                   <span className="tag" style={{ background: 'var(--paper)' }}>📍 {PERSONAL_INFO.location}</span>
-                  <span className="tag" style={{ background: 'var(--paper)' }}>⚡ C/C++ Systems</span>
-                  <span className="tag" style={{ background: 'var(--paper)' }}>🎬 Unreal Engine 5</span>
-                  <span className="tag" style={{ background: 'var(--paper)' }}>🐧 Linux Kernel Primitives</span>
+                  <span className="tag" style={{ background: 'var(--paper)' }}>🎮 Unreal Engine 5 &amp; SDL3</span>
+                  <span className="tag" style={{ background: 'var(--paper)' }}>⚡ C++ Systems &amp; Allocators</span>
+                  <span className="tag" style={{ background: 'var(--paper)' }}>📐 CPU 3D Rasterization</span>
                 </div>
               </div>
 
               {/* Action Buttons styled strictly with .btn & .btn--secondary */}
-              <div className="flex flex-wrap items-center gap-2.5 pt-2">
-                <button
-                  type="button"
-                  onClick={() => handleScrollTo('projects')}
-                  className="btn"
-                >
-                  <span>view projects &gt;&gt;</span>
-                </button>
+              <div className="space-y-2.5 pt-2">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() => handleScrollTo('projects')}
+                    className="btn"
+                  >
+                    <span>view projects &gt;&gt;</span>
+                  </button>
 
-                <button
-                  type="button"
-                  onClick={() => handleScrollTo('contact')}
-                  className="btn btn--secondary"
-                >
-                  <span>contact pad</span>
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => handleScrollTo('contact')}
+                    className="btn btn--secondary"
+                  >
+                    <span>contact pad</span>
+                  </button>
 
-                <a
-                  href={PERSONAL_INFO.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn--secondary"
-                  title="View GitHub profile"
-                >
-                  <span>github</span>
-                </a>
+                  <a
+                    href={PERSONAL_INFO.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn--secondary"
+                    title="View GitHub profile"
+                  >
+                    <span>github</span>
+                  </a>
 
-                <a
-                  href={PERSONAL_INFO.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn--secondary"
-                  title="View LinkedIn profile"
-                >
-                  <span>linkedin</span>
-                </a>
+                  <a
+                    href={PERSONAL_INFO.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn--secondary"
+                    title="View LinkedIn profile"
+                  >
+                    <span>linkedin</span>
+                  </a>
+                </div>
 
-                <a
-                  href="/RESUME_Q-1.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn--secondary"
-                >
-                  <span>resume.pdf</span>
-                </a>
+                {/* Resumes directly from the resumes folder */}
+                <div className="flex flex-wrap items-center gap-2 pt-1">
+                  <span className="label text-[11px]" style={{ color: 'var(--purple-d)' }}>
+                    RESUMES:
+                  </span>
+                  {RESUMES.map((res) => (
+                    <a
+                      key={res.file}
+                      href={res.file}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn--secondary"
+                      style={{ padding: '4px 12px', fontSize: '0.72rem', background: 'var(--yellow)' }}
+                      title={`Download ${res.name}`}
+                    >
+                      <span>📄 {res.name}</span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

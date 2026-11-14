@@ -2,181 +2,211 @@ import { Project, SkillCategory, ExperienceItem } from '../types';
 
 export const PERSONAL_INFO = {
   name: "Uday Singh",
-  roleTitle: "Software Engineer | C/C++ Systems & Performance Engineering",
-  location: "Gandhinagar, Gujarat, India",
-  institution: "IIIT Vadodara (2023 - 2027)",
+  roleTitle: "Game Engine & Systems Programmer | C++ Developer",
+  location: "Sri Muktsar Sahib, Punjab, India",
+  institution: "IIIT Vadodara (2023 – 2027)",
   cpi: "7.56",
   email: "dev352418@gmail.com",
   github: "https://github.com/KAAZamapiloT",
   linkedin: "https://www.linkedin.com/in/uday-singh-5b5a3828b/",
-  bio: "hey there! i'm a systems engineer obsessed with raw performance, low-latency architectures, and building everything from scratch. from custom memory allocators and b+ tree storage engines to cpu software 3d rasterizers, linux container runtimes, and real-time generative scene pipelines in unreal engine 5.",
-  shortBio: "crafting high-performance systems from first principles with a playful sketchbook heart ✎ ⋆ ✿",
-  statusBadge: "available for 2026/2027 systems & performance engineering roles ♡",
+  bio: "C++ developer focused on game engine architecture, Unreal Engine 5 gameplay & AI systems, CPU software rasterization, and performance-critical systems. Passionate about building modular engines, deriving 3D math pipelines from scratch, and eliminating unnecessary abstractions.",
+  shortBio: "game engine & systems programmer crafting engines, gameplay AI, and low-latency C++ software",
+  statusBadge: "available for 2026/2027 game development & systems engineering roles",
 };
+
+export const RESUMES = [
+  { name: "Game Dev Resume", file: "/UdaySingh_ResumeGameDev.pdf", tag: "GAME DEV" },
+  { name: "Systems Resume", file: "/RESUME_cont.pdf", tag: "SYSTEMS" },
+  { name: "Storage & DB Resume", file: "/RESUME_Q-1.pdf", tag: "STORAGE" },
+];
 
 export const PROJECTS: Project[] = [
   {
-    id: "project-canvas",
-    title: "Project Canvas",
-    category: "generative ai & ue5 engine",
+    id: "polar-bear",
+    title: "POLAR BEAR",
+    category: "game development & ai",
     badgeNum: "01",
     cardClass: "card--mint",
-    stampText: "UE5 + AI",
-    stampIcon: "🎬",
-    shortDesc: "LLM-driven scene-generation pipeline in UE5: natural-language prompt ➔ strict JSON scene plan ➔ live lighting, fog and actor spawning.",
-    longDesc: "built an LLM-driven scene-generation pipeline in Unreal Engine 5 using the high-speed Groq API. Designed USceneBuilder, a 5-tier asset resolver (exact, substring, keyword, fuzzy, fallback), and an 11-tier location query engine to dynamically map natural language onto inconsistently named 3D assets.",
-    techStack: ["C++", "Unreal Engine 5", "Groq API", "JSON Schema", "5-Tier Resolver", "Context-Aware AI"],
+    shortDesc: "first-person horror game in Unreal Engine 5 with C++ gameplay systems and Behavior Tree enemy AI.",
+    longDesc: "developed a first-person horror game in Unreal Engine 5 with C++ gameplay systems for health/damage, inventory, key-based interactions, puzzles, hiding, and combat. Implemented enemy AI using Behavior Tree tasks, navigation queries, patrol/wandering behavior, player tracking, chase, and attack states.",
+    techStack: ["C++", "Unreal Engine 5", "Behavior Trees", "Navigation Queries", "Gameplay Systems", "AI State Machine"],
     features: [
-      "Natural-language prompt ➔ strict JSON scene plan ➔ live lighting, fog and actor spawning in UE5",
+      "C++ gameplay systems for health, damage, inventory, key-based puzzle interactions, and hiding",
+      "Enemy AI designed with Behavior Tree tasks, navigation queries, and patrol/wandering behavior",
+      "Dynamic player tracking, chase state transitions, and attack routines",
+      "Modular actor architecture and physics-driven environmental interaction"
+    ],
+    benchmark: "Behavior Tree AI • Full Gameplay Loop in C++ & UE5",
+    githubUrl: "https://github.com/KAAZamapiloT",
+    demoType: "polarbear"
+  },
+  {
+    id: "project-canvas",
+    title: "Project Canvas",
+    category: "game engine & generative ai",
+    badgeNum: "02",
+    cardClass: "card--yellow",
+    shortDesc: "dual-pipeline UE5 system enabling LLM-driven scene generation, converting natural language into structured JSON executed live into lighting, fog, and actor spawning.",
+    longDesc: "built a dual-pipeline UE5 system enabling LLM-driven scene generation, converting natural language into structured JSON executed live into lighting, fog, and actor spawning. Designed a 5-tier asset resolver and 11-tier location query engine in UE5 to map natural-language scene requests to hundreds of inconsistently named assets within tight LLM context limits.",
+    techStack: ["C++", "Unreal Engine 5", "Groq API", "JSON Schema", "5-Tier Asset Resolver", "Location Engine"],
+    features: [
+      "Natural-language prompt ➔ strict JSON scene plan ➔ live lighting, fog, and actor spawning in UE5",
       "5-tier asset resolver (exact, substring, keyword, fuzzy Levenshtein, fallback) for inconsistently named assets",
       "11-tier location query engine mapping spatial descriptions onto 3D world coordinates",
-      "Real-time USceneBuilder actor manipulation with dual-pipeline context-aware combat AI"
+      "USceneBuilder actor manipulation with tight LLM context optimization"
     ],
     benchmark: "Sub-200ms Groq LLM inference • 5-tier fuzzy asset resolver",
     githubUrl: "https://github.com/KAAZamapiloT/Project-CANVAS.git",
     demoType: "canvas"
   },
   {
-    id: "volt",
-    title: "volt",
-    category: "systems & memory",
-    badgeNum: "02",
-    cardClass: "card--yellow",
-    stampText: "C++ ALLOC",
-    stampIcon: "⚡",
-    shortDesc: "header-only C++ systems library with custom linear & pool allocators, lock-free queues, and concurrent thread pool.",
-    longDesc: "a dependency-free, header-only C++ systems library featuring custom Linear and Pool allocators for deterministic control over allocation and object lifetime, eliminating general-purpose heap allocation in hot paths.",
-    techStack: ["C++20", "Custom Allocators", "Lock-Free SPSC", "Ring Buffers", "ThreadPool", "Cache-Conscious Map"],
-    features: [
-      "Custom Linear & Pool allocators eliminating malloc/new in critical inner loops",
-      "SmallVector & compile-time ring buffer primitives for zero cache misses",
-      "Single-Producer Single-Consumer (SPSC) lock-free queue with atomic memory fences",
-      "Concurrent ThreadPool job system as the low-overhead foundation for parallel execution"
-    ],
-    benchmark: "0 heap allocations in hot paths • Lock-Free SPSC Queues",
-    githubUrl: "https://github.com/KAAZamapiloT",
-    demoType: "allocator"
-  },
-  {
-    id: "quartzdb",
-    title: "quartzDB",
-    category: "storage & database",
+    id: "knight-engine",
+    title: "KnightEngine",
+    category: "game engine architecture",
     badgeNum: "03",
     cardClass: "card--sky",
-    stampText: "SQL ENGINE",
-    stampIcon: "💎",
-    shortDesc: "embedded C++ storage engine featuring 4KB slotted-page storage and on-disk B+ Tree indexing across 120,000+ records.",
-    longDesc: "built an embedded storage engine in C++ from scratch using a 4KB slotted-page format, custom pager for durable on-disk persistence, and a hand-written SQL lexer, parser, and query engine supporting full CRUD operations through an interactive terminal.",
-    techStack: ["C++17", "CMake", "B+ Tree Indexing", "Slotted-Page Storage", "SQL Lexer/Parser", "Custom Pager"],
+    shortDesc: "modular C++ game engine with reusable rendering, input, entity, resource, and engine-loop subsystems.",
+    longDesc: "building a custom C++ game engine with modular windowing, logging, and rendering abstraction layers, using the project to establish reusable engine foundations instead of one-off demo code. Designed engine-level abstractions for rendering, game-loop execution, resource management, and component-based game objects.",
+    techStack: ["C++", "SDL3", "Engine Architecture", "Entity-Component System", "Game Loop", "Resource Manager"],
     features: [
-      "Durable on-disk record persistence with 4KB slotted-page architecture",
-      "On-disk B+ Tree index with O(log n) lookups across 120,000+ records",
-      "Sub-millisecond query latency measured on raw disk persistence benchmarks",
-      "Hand-written recursive descent SQL lexer, AST parser, and CRUD execution engine"
+      "Modular windowing, logging, input, and rendering abstraction layers in modern C++",
+      "Fixed-timestep game loop separating simulation ticks from rendering presentation",
+      "Entity-Component System (ECS) architecture for extensible game object composition",
+      "Reusable engine foundations designed for production scaling"
     ],
-    benchmark: "120,000+ records indexed • Sub-millisecond B+ Tree lookups",
+    benchmark: "Fixed 60 FPS Timestep • Modular C++ Subsystems",
     githubUrl: "https://github.com/KAAZamapiloT",
-    demoType: "sql"
+    demoType: "engine"
   },
   {
     id: "pixel",
-    title: "pixel",
-    category: "3d graphics & compute",
+    title: "Pixel",
+    category: "graphics & software rendering",
     badgeNum: "04",
     cardClass: "card--pink",
-    stampText: "SDL3 3D",
-    stampIcon: "🎨",
-    shortDesc: "CPU software rasterizer from first principles with hand-written linear algebra, 6-DOF camera, and frustum culling.",
-    longDesc: "built a pure CPU software 3D rasterizer from mathematical first principles with zero GPU graphics API (OpenGL, Vulkan, DirectX). SDL3 is only used to present the raw framebuffer array directly to the display window.",
-    techStack: ["C++", "SDL3", "3D Math", "Linear Algebra", "Software Rasterizer", "Frustum Culling", "Z-Buffering"],
+    shortDesc: "CPU-only rasterization pipeline from first principles in C++ with hand-written linear algebra and zero graphics API dependency.",
+    longDesc: "built a CPU-only rasterization pipeline from first principles in C++ — projection, transformation, and triangle rasterization implemented with hand-written linear algebra and zero graphics API dependency. Engineered a free 6-DOF camera system with projection math derived and coded from scratch, rendering primitives (triangles, cubes, spheres) with correct perspective transformation and Z-buffering.",
+    techStack: ["C++", "SDL3", "3D Mathematics", "Linear Algebra", "Software Rasterizer", "Z-Buffering"],
     features: [
-      "Full graphics pipeline: World → View → Clip → NDC → Screen space projection",
-      "6-DOF free-look orbital camera with custom matrix math & quaternions",
-      "Precise Z-buffering, perspective-correct barycentric interpolation, and backface culling",
-      "Object-level frustum culling cutting latency from 73.4ms to 32.6ms (2.25x speedup) on 216-entity scene"
+      "Full graphics pipeline: world → view → clip → NDC → screen-space transformation",
+      "Free 6-DOF orbital camera with custom matrix math derived and coded from scratch",
+      "Depth buffer (Z-buffering) for correct primitive visibility and pipeline ordering",
+      "Zero hardware graphics API dependency: SDL3 only presents the final framebuffer"
     ],
-    benchmark: "2.25x speedup (73.4ms → 32.6ms) • 100% CPU Rasterization",
+    benchmark: "100% CPU Rasterization • Hand-Written Linear Algebra",
     githubUrl: "https://github.com/KAAZamapiloT",
     demoType: "rasterizer"
   },
   {
-    id: "mnu-os",
-    title: "mnu-os",
-    category: "linux kernel & runtime",
+    id: "volt",
+    title: "Volt",
+    category: "systems & memory management",
     badgeNum: "05",
     cardClass: "card--lavender",
-    stampText: "KERNEL OS",
-    stampIcon: "🐧",
-    shortDesc: "lightweight container runtime built directly from raw Linux namespaces and cgroups v2 primitives with no Docker daemon.",
-    longDesc: "built a container runtime from raw Linux primitives (namespaces, cgroups v2) for process and resource isolation, with no Docker or existing runtime underneath. Includes a JSON-driven CLI for container lifecycle with enforced memory and CPU limits.",
-    techStack: ["C++", "Linux Kernel", "Namespaces", "cgroups v2", "Process Isolation", "JSON CLI"],
+    shortDesc: "dependency-free C++ systems library featuring custom Linear and Pool allocators, lock-free queues, and concurrent thread pool.",
+    longDesc: "building a dependency-free C++ systems library for performance-critical execution, covering memory management, cache-conscious containers, and concurrent task execution. Implemented Linear/Pool allocators, SmallVector, Ring Buffers, SPSC lock-free queues, Asymmetric Map, and ThreadPool with explicit memory and concurrency control.",
+    techStack: ["C++", "Custom Allocators", "SPSC Lock-Free", "Ring Buffers", "ThreadPool", "Zero Dependencies"],
     features: [
-      "Zero Docker dependency: pure clone(), pivot_root(), and mount() kernel system calls",
-      "Strict hardware resource isolation using modern Linux cgroups v2 controllers",
-      "Enforces physical memory caps, CPU share limits, and PID subtree boundaries",
-      "JSON-driven container manifest engine and interactive lifecycle manager CLI"
+      "Linear and Pool allocators for deterministic allocation and object lifetimes",
+      "Eliminates general-purpose heap allocations in hot paths",
+      "Single-Producer Single-Consumer (SPSC) lock-free queue with atomic memory fences",
+      "Concurrent ThreadPool as low-overhead scheduling foundation"
     ],
-    benchmark: "True kernel-level isolation • Sub-millisecond container spinup",
+    benchmark: "0 heap calls in hot paths • Lock-Free SPSC Queues",
+    githubUrl: "https://github.com/KAAZamapiloT",
+    demoType: "allocator"
+  },
+  {
+    id: "mnu-os",
+    title: "MNU-OS",
+    category: "operating systems & kernel",
+    badgeNum: "06",
+    cardClass: "card--mint",
+    shortDesc: "lightweight Linux container runtime using namespaces and cgroups v2 directly without Docker.",
+    longDesc: "built a lightweight Linux container runtime using namespaces and cgroups v2 directly, without Docker or another container runtime underneath. Implemented a JSON-driven CLI for container lifecycle management with configurable CPU, memory, and process limits.",
+    techStack: ["C++", "Linux Kernel Primitives", "Namespaces", "cgroups v2", "Process Isolation", "CLI"],
+    features: [
+      "Pure Linux kernel primitives: namespaces and cgroups v2 for process and resource isolation",
+      "Zero Docker or existing container runtime dependencies",
+      "Enforces physical memory limits, CPU shares, and PID subtree boundaries",
+      "JSON-driven CLI for container configuration and lifecycle execution"
+    ],
+    benchmark: "Raw Linux Kernel Primitives • Sub-millisecond spinup",
     githubUrl: "https://github.com/KAAZamapiloT",
     demoType: "container"
+  },
+  {
+    id: "quartzdb",
+    title: "QuartzDB",
+    category: "storage & database internals",
+    badgeNum: "07",
+    cardClass: "card--yellow",
+    shortDesc: "embedded storage engine in C++ using a 4KB slotted-page format and on-disk B+ Tree indexing across 120,000+ records.",
+    longDesc: "built an embedded storage engine in C++ using a 4KB slotted-page format and custom pager for durable on-disk record persistence. Implemented an on-disk B+ Tree index for O(log n) primary-key lookups, benchmarked across 120,000+ records with sub-millisecond query latency, and a handwritten SQL lexer/parser/query engine.",
+    techStack: ["C++", "CMake", "B+ Tree Indexing", "Slotted-Page Storage", "Custom Pager", "SQL Engine"],
+    features: [
+      "Durable on-disk record persistence with 4KB slotted-page format and custom pager",
+      "On-disk B+ Tree index with sub-millisecond query latency across 120,000+ records",
+      "Handwritten SQL lexer, parser, and query engine with interactive terminal shell",
+      "Zero third-party database dependencies"
+    ],
+    benchmark: "120,000+ records indexed • Sub-millisecond B+ Tree lookups",
+    githubUrl: "https://github.com/KAAZamapiloT",
+    demoType: "sql"
   }
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    title: "Languages & Dialects",
-    icon: "✎",
-    badgeColor: "#FCEBEB",
+    title: "Programming Languages",
+    icon: "💻",
+    badgeColor: "#FFE98A",
     skills: [
-      { name: "C++ (17/20)", level: 5, note: "templates, custom allocators, systems programming, zero-overhead abstractions", isKey: true },
-      { name: "Python", level: 4, note: "automation, scripting, data structures, research benchmarking", isKey: true },
-      { name: "C", level: 5, note: "posix syscalls, pointers, memory layout, linux kernel interfaces" },
-      { name: "Bash / Shell", level: 4, note: "linux automation, cli tooling, devops pipelines" },
-      { name: "TypeScript / JS", level: 4, note: "creative web engineering, interactive tool visualizers" },
+      { name: "C++", level: 5, note: "game engine architecture, systems programming, memory management, algorithms, templates", isKey: true },
+      { name: "C", level: 5, note: "pointers, memory layout, POSIX syscalls, low-level data structures", isKey: true },
     ]
   },
   {
-    title: "Systems & Low-Latency Spells",
-    icon: "⚡",
-    badgeColor: "#F9EFE4",
+    title: "Game Development & Engines",
+    icon: "🎮",
+    badgeColor: "#9FE8CF",
     skills: [
-      { name: "Custom Allocators", level: 5, note: "Linear, Pool, Stack, Arena allocators without general heap malloc", isKey: true },
-      { name: "Lock-Free Primitives", level: 5, note: "SPSC queues, ring buffers, memory fences, atomic CAS loops", isKey: true },
-      { name: "Cache-Conscious Design", level: 5, note: "data-oriented architecture, false sharing avoidance, CPU cache lines" },
-      { name: "Concurrency & ThreadPool", level: 5, note: "work-stealing queues, mutex/condition-variable synchronization", isKey: true },
+      { name: "Unreal Engine 5", level: 5, note: "C++ gameplay systems, actor lifecycles, player interaction, asset management", isKey: true },
+      { name: "Behavior Trees & AI", level: 5, note: "AI state machines, navigation queries, patrol/wandering, player tracking, chase & attack", isKey: true },
+      { name: "Gameplay Systems", level: 5, note: "health/damage, inventory, key-based puzzle interactions, hiding mechanics, combat", isKey: true },
+      { name: "SDL3", level: 5, note: "modular windowing, event handling, input abstraction, frame pacing", isKey: true },
     ]
   },
   {
-    title: "Core CS, OS & Storage",
-    icon: "📜",
-    badgeColor: "#EEF3EB",
-    skills: [
-      { name: "OS & Kernel Primitives", level: 5, note: "Linux namespaces, cgroups v2, virtual memory, process isolation", isKey: true },
-      { name: "Database Internals", level: 5, note: "B+ Tree on-disk indexing, slotted-page storage, custom pager, SQL engine", isKey: true },
-      { name: "Data Structures & DSA", level: 5, note: "advanced trees, graphs, heaps, dynamic programming, algorithmic analysis" },
-      { name: "Computer Networks", level: 4, note: "TCP/IP socket programming, non-blocking I/O, epoll" },
-    ]
-  },
-  {
-    title: "Graphics, UE5 & Generative AI",
+    title: "Graphics & Rendering Pipelines",
     icon: "🎨",
-    badgeColor: "#EBF4F5",
+    badgeColor: "#9FD8FF",
     skills: [
-      { name: "Unreal Engine 5 & Groq API", level: 5, note: "USceneBuilder, LLM scene pipeline, 5-tier asset resolver, 11-tier location engine", isKey: true },
-      { name: "3D Linear Algebra", level: 5, note: "vectors, matrices, 4x4 projections, quaternions, coordinate spaces", isKey: true },
-      { name: "CPU Software Rasterizer", level: 5, note: "barycentric interpolation, Z-buffer, clip space, 6-DOF camera", isKey: true },
-      { name: "Frustum Culling & Optimization", level: 5, note: "bounding spheres, AABB tests, 2.25x latency reduction" },
+      { name: "CPU Software Rasterization", level: 5, note: "built pure CPU rasterizer from mathematical first principles with zero graphics API", isKey: true },
+      { name: "3D Mathematics & Linear Algebra", level: 5, note: "vectors, matrices, quaternions, camera transformations, perspective projections", isKey: true },
+      { name: "Z-Buffering & Visibility", level: 5, note: "depth buffer, primitive ordering (world → view → clip → NDC → screen space)", isKey: true },
+      { name: "Rendering Pipelines & Event Systems", level: 5, note: "fixed-timestep loops, render abstraction layers, modular subsystems", isKey: true },
     ]
   },
   {
-    title: "Tools & Developer Craft",
-    icon: "🛠️",
-    badgeColor: "#FAF5EB",
+    title: "Systems & Low-Latency Architecture",
+    icon: "⚡",
+    badgeColor: "#BFA8FF",
     skills: [
-      { name: "Linux (WSL / Native)", level: 5, note: "daily driver environment, kernel tools, perf, htop, strace", isKey: true },
-      { name: "Git & GitHub", level: 5, note: "branching models, CI/CD actions, release workflows" },
-      { name: "CMake & Build Systems", level: 5, note: "multi-platform targets, compiler flags (-O3, -Wall, -Wextra), sanitizer builds" },
-      { name: "VS Code & Visual Studio", level: 4, note: "debuggers, disassembly views, memory inspectors" },
+      { name: "Custom Allocators", level: 5, note: "Linear and Pool allocators for deterministic memory control and zero heap calls in hot paths", isKey: true },
+      { name: "Lock-Free Primitives", level: 5, note: "Single-Producer Single-Consumer (SPSC) queues, compile-time ring buffers, atomic fences", isKey: true },
+      { name: "Concurrency & ThreadPool", level: 5, note: "concurrent task scheduling, worker threads, thread synchronization", isKey: true },
+      { name: "Linux Kernel Primitives", level: 5, note: "namespaces, cgroups v2 resource isolation, virtual memory", isKey: true },
+    ]
+  },
+  {
+    title: "Core CS & Engineering Tools",
+    icon: "🛠️",
+    badgeColor: "#FF8FC1",
+    skills: [
+      { name: "Data Structures & Algorithms", level: 5, note: "trees, B+ trees, graphs, heaps, cache-conscious data layouts", isKey: true },
+      { name: "Operating Systems", level: 5, note: "process isolation, page storage, virtual memory, memory hierarchies", isKey: true },
+      { name: "Development Tools", level: 5, note: "Git, GitHub, Visual Studio, VS Code, CMake", isKey: true },
     ]
   }
 ];
@@ -187,13 +217,13 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     title: "Research Intern",
     organization: "Indian Institute of Information Technology Vadodara",
     period: "May 2026 – August 2026",
-    location: "Remote / Gandhinagar",
+    location: "Remote",
     type: "Research & Systems",
-    color: "#F9EFE4",
+    color: "var(--mint)",
     icon: "🔬",
     bulletPoints: [
-      "Studied skill-composition strategies for autonomous multi-agent systems, focusing on reusable skills and fault-isolated execution.",
-      "Designed a microkernel-style orchestration layer modeling skills as DAG-executed components, separating planning, execution, and recovery paths."
+      "Research intern studying skill-composition strategies for autonomous multi-agent systems, focusing on how reusable skills can be composed into fault-isolated execution graphs.",
+      "Designed a microkernel-style orchestration layer for autonomous multi-agent systems, modeling skills as DAG-executed components to isolate failures and decouple planning, execution, and recovery paths."
     ]
   },
   {
@@ -202,12 +232,12 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     organization: "9-Bit Robotics Club • IIIT Vadodara",
     period: "August 2025 – May 2026",
     location: "Gandhinagar, India",
-    type: "Leadership & Hardware",
-    color: "#F1EBF5",
+    type: "Leadership & Management",
+    color: "var(--yellow)",
     icon: "🤖",
     bulletPoints: [
-      "Organized Robo Soccer during Cerebro, coordinating 10 teams (40 participants) with hardware setups.",
-      "Coordinated with university faculty for event approval and managed component procurement & budget allocations."
+      "Organized Robo Soccer during Cerebro, coordinating 10 teams (40 participants).",
+      "Coordinated with faculty for event approval and managed component procurement."
     ]
   },
   {
@@ -216,12 +246,12 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     organization: "HACKIIITV Hackathon",
     period: "Hackathon Event",
     location: "IIIT Vadodara",
-    type: "Competition & Engineering",
-    color: "#FCEBEB",
+    type: "Competition",
+    color: "var(--pink)",
     icon: "⭐",
     bulletPoints: [
-      "Secured 2nd place out of dozens of competing engineering teams at IIIT Vadodara's flagship hackathon.",
-      "Rapidly designed and engineered an innovative technical project under intense 24-hour deadline pressure."
+      "Secured 2nd Place in HACKIIITV, a hackathon conducted at IIIT Vadodara.",
+      "Engineered an innovative technical solution under strict 24-hour hackathon constraints."
     ]
   },
   {
@@ -229,28 +259,13 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     title: "B.Tech in Computer Science & Engineering",
     organization: "Indian Institute of Information Technology Vadodara",
     period: "Aug 2023 – May 2027",
-    location: "Gandhinagar, Gujarat",
-    type: "Academics",
-    color: "#EEF3EB",
+    location: "Gandhinagar, Gujarat, India",
+    type: "Education",
+    color: "var(--sky)",
     icon: "🎓",
     bulletPoints: [
-      "CPI: 7.56 • Core Coursework in Operating Systems, Database Internals, DSA, Systems Architecture, and Computer Networks.",
-      "Active contributor to systems engineering, open-source projects, and technical peer mentorship."
+      "CPI: 7.56",
+      "Core coursework in Operating Systems, Database Internals, Data Structures & Algorithms, Object-Oriented Programming, and Computer Networks."
     ]
   }
-];
-
-export const STICKER_LIBRARY = [
-  { id: "bunny", name: "Cute Bunny", emoji: "🐰" },
-  { id: "cat", name: "Chibi Cat", emoji: "🐱" },
-  { id: "bear", name: "Little Bear", emoji: "🐻" },
-  { id: "star", name: "Gold Sparkle", emoji: "⭐" },
-  { id: "sparkle", name: "Magic Sparkle", emoji: "✨" },
-  { id: "heart", name: "Sweet Heart", emoji: "💖" },
-  { id: "cherry", name: "Cherries", emoji: "🍒" },
-  { id: "coffee", name: "Warm Coffee", emoji: "☕" },
-  { id: "flower", name: "Sakura Blossom", emoji: "🌸" },
-  { id: "floppy", name: "Retro Disk", emoji: "💾" },
-  { id: "pencil", name: "Sketch Pencil", emoji: "✎" },
-  { id: "tape", name: "Washi Piece", emoji: "🩹" },
 ];

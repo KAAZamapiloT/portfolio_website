@@ -7,12 +7,11 @@ import confetti from 'canvas-confetti';
 export const SkillsSection: React.FC = () => {
   const [activeCategoryIdx, setActiveCategoryIdx] = useState(0);
   const [checkedSkills, setCheckedSkills] = useState<Record<string, boolean>>({
-    'C++ (17/20)': true,
+    'C++': true,
+    'Unreal Engine 5': true,
+    'Behavior Trees & AI': true,
+    'CPU Software Rasterization': true,
     'Custom Allocators': true,
-    'CPU Software Rasterizer': true,
-    'OS & Kernel Primitives': true,
-    'Database Internals': true,
-    'Unreal Engine 5 & Groq API': true,
   });
 
   const handleToggleCheck = (name: string) => {
