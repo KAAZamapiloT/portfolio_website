@@ -85,7 +85,7 @@ export const PROJECTS: Project[] = [
       "Reusable engine foundations designed for production scaling"
     ],
     benchmark: "Fixed 60 FPS Timestep • Modular C++ Subsystems",
-    githubUrl: "https://github.com/KAAZamapiloT/KnightEngine",
+    githubUrl: "https://github.com/KAAZamapiloT/Knight",
     demoType: "engine"
   },
   {
@@ -142,7 +142,7 @@ export const PROJECTS: Project[] = [
       "JSON-driven CLI for container configuration and lifecycle execution"
     ],
     benchmark: "Raw Linux Kernel Primitives • Sub-millisecond spinup",
-    githubUrl: "https://github.com/KAAZamapiloT/MNU-OS",
+    githubUrl: "https://github.com/KAAZamapiloT/Project-MNU-OS",
     demoType: "container"
   },
   {
@@ -161,7 +161,7 @@ export const PROJECTS: Project[] = [
       "Zero third-party database dependencies"
     ],
     benchmark: "120,000+ records indexed • Sub-millisecond B+ Tree lookups",
-    githubUrl: "https://github.com/KAAZamapiloT/QuartzDB",
+    githubUrl: "https://github.com/KAAZamapiloT/QUARTZ_DB",
     demoType: "sql"
   }
 ];
