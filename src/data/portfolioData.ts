@@ -14,10 +14,20 @@ export const PERSONAL_INFO = {
   statusBadge: "available for 2026/2027 game development & systems engineering roles",
 };
 
-export const RESUMES = [
+export const PRIMARY_RESUME = {
+  name: "Resume (Primary)",
+  file: "/RESUME_Q-1.pdf",
+  tag: "PRIMARY",
+};
+
+export const ALTERNATIVE_RESUMES = [
   { name: "Game Dev Resume", file: "/UdaySingh_ResumeGameDev.pdf", tag: "GAME DEV" },
   { name: "Systems Resume", file: "/RESUME_cont.pdf", tag: "SYSTEMS" },
-  { name: "Storage & DB Resume", file: "/RESUME_Q-1.pdf", tag: "STORAGE" },
+];
+
+export const RESUMES = [
+  PRIMARY_RESUME,
+  ...ALTERNATIVE_RESUMES,
 ];
 
 export const PROJECTS: Project[] = [
@@ -37,7 +47,7 @@ export const PROJECTS: Project[] = [
       "Modular actor architecture and physics-driven environmental interaction"
     ],
     benchmark: "Behavior Tree AI • Full Gameplay Loop in C++ & UE5",
-    githubUrl: "https://github.com/KAAZamapiloT",
+    githubUrl: "https://github.com/KAAZamapiloT/POLAR_BEAR",
     demoType: "polarbear"
   },
   {
@@ -56,7 +66,7 @@ export const PROJECTS: Project[] = [
       "USceneBuilder actor manipulation with tight LLM context optimization"
     ],
     benchmark: "Sub-200ms Groq LLM inference • 5-tier fuzzy asset resolver",
-    githubUrl: "https://github.com/KAAZamapiloT/Project-CANVAS.git",
+    githubUrl: "https://github.com/KAAZamapiloT/Project-CANVAS",
     demoType: "canvas"
   },
   {
@@ -75,7 +85,7 @@ export const PROJECTS: Project[] = [
       "Reusable engine foundations designed for production scaling"
     ],
     benchmark: "Fixed 60 FPS Timestep • Modular C++ Subsystems",
-    githubUrl: "https://github.com/KAAZamapiloT",
+    githubUrl: "https://github.com/KAAZamapiloT/KnightEngine",
     demoType: "engine"
   },
   {
@@ -94,7 +104,7 @@ export const PROJECTS: Project[] = [
       "Zero hardware graphics API dependency: SDL3 only presents the final framebuffer"
     ],
     benchmark: "100% CPU Rasterization • Hand-Written Linear Algebra",
-    githubUrl: "https://github.com/KAAZamapiloT",
+    githubUrl: "https://github.com/KAAZamapiloT/Pixel",
     demoType: "rasterizer"
   },
   {
@@ -113,7 +123,7 @@ export const PROJECTS: Project[] = [
       "Concurrent ThreadPool as low-overhead scheduling foundation"
     ],
     benchmark: "0 heap calls in hot paths • Lock-Free SPSC Queues",
-    githubUrl: "https://github.com/KAAZamapiloT",
+    githubUrl: "https://github.com/KAAZamapiloT/Volt",
     demoType: "allocator"
   },
   {
@@ -132,7 +142,7 @@ export const PROJECTS: Project[] = [
       "JSON-driven CLI for container configuration and lifecycle execution"
     ],
     benchmark: "Raw Linux Kernel Primitives • Sub-millisecond spinup",
-    githubUrl: "https://github.com/KAAZamapiloT",
+    githubUrl: "https://github.com/KAAZamapiloT/MNU-OS",
     demoType: "container"
   },
   {
@@ -151,7 +161,7 @@ export const PROJECTS: Project[] = [
       "Zero third-party database dependencies"
     ],
     benchmark: "120,000+ records indexed • Sub-millisecond B+ Tree lookups",
-    githubUrl: "https://github.com/KAAZamapiloT",
+    githubUrl: "https://github.com/KAAZamapiloT/QuartzDB",
     demoType: "sql"
   }
 ];
@@ -163,7 +173,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     badgeColor: "#FFE98A",
     skills: [
       { name: "C++", level: 5, note: "game engine architecture, systems programming, memory management, algorithms, templates", isKey: true },
-      { name: "C", level: 5, note: "pointers, memory layout, POSIX syscalls, low-level data structures", isKey: true },
+      { name: "C", level: 5, note: "pointers, memory layout, system calls, low-level data structures", isKey: true },
     ]
   },
   {

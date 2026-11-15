@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChibiAvatar } from './ChibiAvatar';
 import { Decoration } from './Decorations';
-import { PERSONAL_INFO, RESUMES } from '../data/portfolioData';
+import { PERSONAL_INFO, PRIMARY_RESUME, ALTERNATIVE_RESUMES } from '../data/portfolioData';
 import { playCutePop } from '../utils/audio';
 
 export const Hero: React.FC = () => {
@@ -74,6 +74,17 @@ export const Hero: React.FC = () => {
                     <span>view projects &gt;&gt;</span>
                   </button>
 
+                  <a
+                    href={PRIMARY_RESUME.file}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn"
+                    style={{ background: 'var(--yellow)' }}
+                    title="Download Primary Resume (Resume Q)"
+                  >
+                    <span>📄 resume.pdf (primary)</span>
+                  </a>
+
                   <button
                     type="button"
                     onClick={() => handleScrollTo('contact')}
@@ -103,19 +114,19 @@ export const Hero: React.FC = () => {
                   </a>
                 </div>
 
-                {/* Resumes directly from the resumes folder */}
+                {/* Clearly labelled alternative resumes */}
                 <div className="flex flex-wrap items-center gap-2 pt-1">
                   <span className="label text-[11px]" style={{ color: 'var(--purple-d)' }}>
-                    RESUMES:
+                    ALT RESUMES:
                   </span>
-                  {RESUMES.map((res) => (
+                  {ALTERNATIVE_RESUMES.map((res) => (
                     <a
                       key={res.file}
                       href={res.file}
                       target="_blank"
                       rel="noreferrer"
                       className="btn btn--secondary"
-                      style={{ padding: '4px 12px', fontSize: '0.72rem', background: 'var(--yellow)' }}
+                      style={{ padding: '4px 12px', fontSize: '0.72rem' }}
                       title={`Download ${res.name}`}
                     >
                       <span>📄 {res.name}</span>

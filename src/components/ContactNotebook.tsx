@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { PERSONAL_INFO, PRIMARY_RESUME, ALTERNATIVE_RESUMES } from '../data/portfolioData';
 import { Decoration } from './Decorations';
 import { playCutePop, playCelebrationChime } from '../utils/audio';
 import confetti from 'canvas-confetti';
@@ -110,25 +110,28 @@ export const ContactNotebook: React.FC = () => {
                     <span>linkedin</span>
                   </a>
                   <a
-                    href="/UdaySingh_ResumeGameDev.pdf"
+                    href={PRIMARY_RESUME.file}
                     target="_blank"
                     rel="noreferrer"
                     className="btn btn--secondary"
                     style={{ padding: '6px 14px', fontSize: '0.78rem', background: 'var(--yellow)' }}
-                    title="Download Game Dev Resume"
+                    title="Download Primary Resume (Resume Q)"
                   >
-                    <span>📄 game dev resume</span>
+                    <span>📄 resume.pdf (primary)</span>
                   </a>
-                  <a
-                    href="/RESUME_cont.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn btn--secondary"
-                    style={{ padding: '6px 14px', fontSize: '0.78rem' }}
-                    title="Download Systems Resume"
-                  >
-                    <span>📄 systems resume</span>
-                  </a>
+                  {ALTERNATIVE_RESUMES.map((res) => (
+                    <a
+                      key={res.file}
+                      href={res.file}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn--secondary"
+                      style={{ padding: '6px 14px', fontSize: '0.78rem' }}
+                      title={`Download ${res.name} (Alternative)`}
+                    >
+                      <span>📄 alt: {res.name.toLowerCase().replace(' resume', '')}</span>
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>

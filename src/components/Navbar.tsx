@@ -69,11 +69,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Primary Actions: Resume + Sound */}
       <div className="flex items-center gap-2">
         <a
-          href="/UdaySingh_ResumeGameDev.pdf"
+          href="/RESUME_Q-1.pdf"
           target="_blank"
           rel="noreferrer"
           className="btn"
           style={{ padding: '6px 16px', fontSize: '0.8rem' }}
+          title="Download Primary Resume (Resume Q)"
         >
           <span>resume.pdf</span>
         </a>
