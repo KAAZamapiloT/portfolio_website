@@ -67,10 +67,10 @@ export const AllocatorDemo: React.FC = () => {
       <div className="flex justify-between items-center border-b border-[var(--ink)]/20 pb-2">
         <span className="label text-xs flex items-center gap-1.5" style={{ color: 'var(--ink)' }}>
           <span>⚡</span>
-          <span>Volt Linear & Pool Arena Simulator</span>
+          <span>Volt: Linear &amp; Pool Allocator Arena Preview</span>
         </span>
         <span className="tag" style={{ background: 'var(--mint)', fontSize: '0.7rem' }}>
-          Heap Calls: {heapCalls} (Zero!)
+          Memory Arena Simulation
         </span>
       </div>
 

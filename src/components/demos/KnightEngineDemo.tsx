@@ -44,19 +44,19 @@ export const KnightEngineDemo: React.FC = () => {
       <div className="flex justify-between items-center border-b border-[var(--ink)]/20 pb-2">
         <span className="label text-xs flex items-center gap-1.5" style={{ color: 'var(--ink)' }}>
           <span>⚙️</span>
-          <span>KnightEngine: Modular C++ Game Engine Architecture</span>
+          <span>KnightEngine: Modular Architecture &amp; ECS Preview</span>
         </span>
         <span className="tag" style={{ background: 'var(--sky)', fontSize: '0.7rem' }}>
-          C++ &amp; SDL3
+          ECS &amp; Loop Simulation
         </span>
       </div>
 
       {/* Engine Loop & Performance Telemetry */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[10px]">
         <div className="p-1.5 rounded border border-[var(--ink)]/30" style={{ background: 'var(--cream)' }}>
-          <span className="block" style={{ color: 'var(--purple-d)' }}>Engine Loop:</span>
+          <span className="block" style={{ color: 'var(--purple-d)' }}>Simulation Loop:</span>
           <span className="font-bold text-xs" style={{ color: isTicking ? 'var(--mint)' : 'var(--hot-pink)' }}>
-            {isTicking ? '● 60 FPS Fixed' : '○ Paused'}
+            {isTicking ? '● 60 Ticks/s' : '○ Paused'}
           </span>
         </div>
         <div className="p-1.5 rounded border border-[var(--ink)]/30" style={{ background: 'var(--cream)' }}>

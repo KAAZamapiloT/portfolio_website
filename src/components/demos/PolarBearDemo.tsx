@@ -67,11 +67,23 @@ export const PolarBearDemo: React.FC = () => {
       <div className="flex justify-between items-center border-b border-[var(--ink)]/20 pb-2">
         <span className="label text-xs flex items-center gap-1.5" style={{ color: 'var(--ink)' }}>
           <span>🐻‍❄️</span>
-          <span>POLAR BEAR: UE5 Behavior Tree &amp; Gameplay Systems</span>
+          <span>POLAR BEAR: Enemy AI States &amp; Detection Preview</span>
         </span>
         <span className="tag" style={{ background: 'var(--mint)', fontSize: '0.7rem' }}>
-          UE5 &amp; C++ Horror
+          Behavior Tree Simulation
         </span>
+      </div>
+
+      {/* AI State Pipeline Indicator */}
+      <div className="text-[10px] flex flex-wrap items-center gap-1.5 pb-1 text-[var(--purple-d)]">
+        <span>AI State Flow:</span>
+        <span className={`px-1.5 py-0.5 rounded border border-[var(--ink)]/30 font-bold ${aiState === 'PATROL' ? 'bg-[var(--mint)] text-[var(--ink)]' : 'bg-[var(--cream)]'}`}>PATROL</span>
+        <span>➔</span>
+        <span className={`px-1.5 py-0.5 rounded border border-[var(--ink)]/30 font-bold ${aiState === 'INVESTIGATE' ? 'bg-[var(--yellow)] text-[var(--ink)]' : 'bg-[var(--cream)]'}`}>INVESTIGATE</span>
+        <span>➔</span>
+        <span className={`px-1.5 py-0.5 rounded border border-[var(--ink)]/30 font-bold ${aiState === 'CHASE' ? 'bg-[var(--pink)] text-[var(--ink)]' : 'bg-[var(--cream)]'}`}>CHASE</span>
+        <span>➔</span>
+        <span className={`px-1.5 py-0.5 rounded border border-[var(--ink)]/30 font-bold ${aiState === 'ATTACK' ? 'bg-[var(--hot-pink)] text-[var(--paper)]' : 'bg-[var(--cream)]'}`}>ATTACK</span>
       </div>
 
       {/* Gameplay Status Bar */}
@@ -184,6 +196,16 @@ export const PolarBearDemo: React.FC = () => {
         >
           {isHiding ? '🚪 Exit Locker' : '🚪 Hide in Locker'}
         </button>
+        {playerHealth < 100 && (
+          <button
+            type="button"
+            onClick={() => { playCutePop(800); setPlayerHealth(100); setAiState('PATROL'); }}
+            className="btn btn--secondary"
+            style={{ padding: '6px 12px', fontSize: '0.75rem', background: 'var(--sky)' }}
+          >
+            💊 Use Medkit (+100 HP)
+          </button>
+        )}
       </div>
     </div>
   );

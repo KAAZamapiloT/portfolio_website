@@ -34,7 +34,7 @@ export const ContainerDemo: React.FC = () => {
       <div className="flex justify-between items-center border-b border-[var(--ink)]/20 pb-2">
         <span className="label text-xs flex items-center gap-1.5" style={{ color: 'var(--ink)' }}>
           <span>🐧</span>
-          <span>MNU-OS Linux Container Runtime</span>
+          <span>MNU-OS: Linux Container &amp; cgroups v2 Isolation Preview</span>
         </span>
         <span
           className="tag"
@@ -43,7 +43,7 @@ export const ContainerDemo: React.FC = () => {
             fontSize: '0.7rem',
           }}
         >
-          {isRunning ? '● RUNNING' : '○ STOPPED'}
+          {isRunning ? '● RUNNING (CONCEPT)' : '○ STOPPED'}
         </span>
       </div>
 

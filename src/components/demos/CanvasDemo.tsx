@@ -182,11 +182,25 @@ export const CanvasDemo: React.FC = () => {
       <div className="flex justify-between items-center border-b border-[var(--ink)]/20 pb-2">
         <span className="label text-xs flex items-center gap-1.5" style={{ color: 'var(--ink)' }}>
           <span>🎬</span>
-          <span>USceneBuilder & Groq LLM Pipeline</span>
+          <span>Project Canvas: LLM-to-Scene Pipeline Preview</span>
         </span>
         <span className="tag" style={{ background: 'var(--yellow)', fontSize: '0.7rem' }}>
-          UE5.2+ & Groq API
+          Conceptual Pipeline Simulation
         </span>
+      </div>
+
+      {/* 5-Stage Pipeline Indicator */}
+      <div className="text-[10px] flex flex-wrap items-center gap-1 pb-1 text-[var(--purple-d)] font-mono">
+        <span>Pipeline:</span>
+        <span className="px-1.5 py-0.5 rounded border border-[var(--ink)]/30 font-bold bg-[var(--yellow)] text-[var(--ink)]">1. Prompt</span>
+        <span>➔</span>
+        <span className="px-1.5 py-0.5 rounded border border-[var(--ink)]/30 font-bold bg-[var(--mint)] text-[var(--ink)]">2. LLM Plan</span>
+        <span>➔</span>
+        <span className="px-1.5 py-0.5 rounded border border-[var(--ink)]/30 font-bold bg-[var(--sky)] text-[var(--ink)]">3. Strict JSON</span>
+        <span>➔</span>
+        <span className="px-1.5 py-0.5 rounded border border-[var(--ink)]/30 font-bold bg-[var(--lavender)] text-[var(--ink)]">4. 5-Tier Resolver</span>
+        <span>➔</span>
+        <span className="px-1.5 py-0.5 rounded border border-[var(--ink)]/30 font-bold bg-[var(--pink)] text-[var(--ink)]">5. Scene Spawning</span>
       </div>
 
       <div className="flex flex-wrap gap-1.5 items-center">
@@ -222,7 +236,7 @@ export const CanvasDemo: React.FC = () => {
           className="btn"
           style={{ padding: '8px 16px', fontSize: '0.8rem', whiteSpace: 'nowrap' }}
         >
-          {isGenerating ? 'Inferring...' : 'Generate ⏎'}
+          {isGenerating ? 'Simulating...' : 'Simulate Pipeline ⏎'}
         </button>
       </form>
 
@@ -240,7 +254,7 @@ export const CanvasDemo: React.FC = () => {
             cursor: 'pointer',
           }}
         >
-          🎮 UE5 Viewport
+          🎮 Simulated Scene View
         </button>
         <button
           type="button"
@@ -279,7 +293,7 @@ export const CanvasDemo: React.FC = () => {
           <div className="relative border-2 border-[var(--ink)] rounded-lg overflow-hidden shadow-[2px_2px_0px_var(--ink)]">
             <canvas ref={canvasRef} width={220} height={140} className="block" />
             <div className="absolute bottom-1 left-1 bg-[var(--ink)] text-[var(--paper)] text-[9px] px-1.5 py-0.2 rounded font-mono">
-              Live USceneBuilder
+              Simulated Scene Layout
             </div>
           </div>
 

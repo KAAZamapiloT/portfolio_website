@@ -63,7 +63,7 @@ export const Projects: React.FC = () => {
                     {proj.benchmark && (
                       <div className="card__inset mb-3" style={{ background: 'var(--paper)' }}>
                         <span className="label block text-[10px] mb-0.5" style={{ color: 'var(--purple-d)' }}>
-                          SPECS // ARCHITECTURE:
+                          PROJECT BENCHMARK // SPECS:
                         </span>
                         <span className="font-bold text-xs" style={{ color: 'var(--ink)' }}>
                           ★ {proj.benchmark}
@@ -84,7 +84,15 @@ export const Projects: React.FC = () => {
                   {/* Interactive Demo Inset Drawer */}
                   <div>
                     {isDemoActive && (
-                      <div className="mb-3">
+                      <div className="mb-3 space-y-2">
+                        {/* Subtle disclosure distinguishing simulation from actual project */}
+                        <div
+                          className="card__inset py-1.5 px-3 text-[11px] font-mono border-dashed"
+                          style={{ background: 'var(--cream)', color: 'var(--purple-d)' }}
+                        >
+                          ℹ️ <em>Browser-based simulation — illustrates project concepts; does not execute the original project implementation.</em>
+                        </div>
+
                         {proj.demoType === 'polarbear' && <PolarBearDemo />}
                         {proj.demoType === 'canvas' && <CanvasDemo />}
                         {proj.demoType === 'engine' && <KnightEngineDemo />}
@@ -96,14 +104,14 @@ export const Projects: React.FC = () => {
                     )}
 
                     {/* Action Buttons */}
-                    <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[var(--ink)]/30">
+                    <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-[var(--ink)]/30">
                       <button
                         type="button"
                         onClick={() => handleToggleDemo(proj.id)}
                         className={`btn ${isDemoActive ? 'btn--secondary' : ''}`}
-                        style={{ padding: '8px 16px', fontSize: '0.78rem' }}
+                        style={{ padding: '8px 14px', fontSize: '0.78rem' }}
                       >
-                        <span>{isDemoActive ? '▲ CLOSE LAB' : '▼ TEST LAB'}</span>
+                        <span>{isDemoActive ? '▲ CLOSE PREVIEW' : '▼ INTERACTIVE PREVIEW'}</span>
                       </button>
 
                       <a
@@ -112,9 +120,36 @@ export const Projects: React.FC = () => {
                         rel="noreferrer"
                         className="btn btn--secondary"
                         style={{ padding: '8px 14px', fontSize: '0.78rem' }}
+                        title={`View source code for ${proj.title} on GitHub`}
                       >
-                        <span>view code &gt;&gt;</span>
+                        <span>SOURCE CODE ↗</span>
                       </a>
+
+                      {proj.architectureUrl && (
+                        <a
+                          href={proj.architectureUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn btn--secondary"
+                          style={{ padding: '8px 14px', fontSize: '0.78rem' }}
+                          title={`View architecture documentation for ${proj.title}`}
+                        >
+                          <span>ARCHITECTURE ↗</span>
+                        </a>
+                      )}
+
+                      {proj.videoUrl && (
+                        <a
+                          href={proj.videoUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn btn--secondary"
+                          style={{ padding: '8px 14px', fontSize: '0.78rem' }}
+                          title={`Watch gameplay / video demo of ${proj.title}`}
+                        >
+                          <span>GAMEPLAY / VIDEO ↗</span>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </article>

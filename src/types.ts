@@ -12,6 +12,8 @@ export interface Project {
   features: string[];
   benchmark?: string;
   githubUrl: string;
+  architectureUrl?: string;
+  videoUrl?: string;
   demoType: 'polarbear' | 'canvas' | 'engine' | 'rasterizer' | 'allocator' | 'sql' | 'container';
 }
 

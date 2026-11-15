@@ -11,6 +11,7 @@ export const RasterizerDemo: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isRotating, setIsRotating] = useState(true);
   const [wireframeOnly, setWireframeOnly] = useState(false);
+  const [cullingEnabled, setCullingEnabled] = useState(true);
   const [fov, setFov] = useState(250);
   const rotAngle = useRef({ x: 0.4, y: 0.6 });
 
@@ -104,9 +105,9 @@ export const RasterizerDemo: React.FC = () => {
         const p1 = projected[indices[1]];
         const p2 = projected[indices[2]];
 
-        // Normal check for backface culling
+        // Frustum & backface culling check
         const normalZ = (p1.px - p0.px) * (p2.py - p0.py) - (p1.py - p0.py) * (p2.px - p0.px);
-        if (normalZ < 0) return;
+        if (cullingEnabled && normalZ < 0) return;
 
         ctx.beginPath();
         ctx.moveTo(p0.px, p0.py);
@@ -124,7 +125,7 @@ export const RasterizerDemo: React.FC = () => {
         ctx.stroke();
       });
 
-      // Draw vertex sparkles in var(--hot-pink)
+      // Draw vertex points
       projected.forEach((p) => {
         ctx.fillStyle = '#FF5C9D';
         ctx.beginPath();
@@ -140,17 +141,17 @@ export const RasterizerDemo: React.FC = () => {
 
     render();
     return () => cancelAnimationFrame(animId);
-  }, [isRotating, wireframeOnly, fov]);
+  }, [isRotating, wireframeOnly, cullingEnabled, fov]);
 
   return (
     <div className="card__inset text-left space-y-3" style={{ background: 'var(--paper)' }}>
       <div className="flex justify-between items-center border-b border-[var(--ink)]/20 pb-2">
         <span className="label text-xs flex items-center gap-1.5" style={{ color: 'var(--ink)' }}>
           <span>🎨</span>
-          <span>Pixel 3D CPU Rasterizer Engine</span>
+          <span>Pixel: 3D Rasterization &amp; Depth Pipeline</span>
         </span>
         <span className="tag" style={{ background: 'var(--pink)', fontSize: '0.7rem' }}>
-          Frustum & Z-Buffer: Active
+          Simulated Pipeline
         </span>
       </div>
 
@@ -162,7 +163,7 @@ export const RasterizerDemo: React.FC = () => {
             className="absolute top-1.5 left-2 px-1.5 py-0.5 rounded text-[10px] font-mono border border-[var(--ink)] font-bold"
             style={{ background: 'var(--paper)', color: 'var(--ink)' }}
           >
-            FPS: 60 (CPU)
+            Canvas: 60 FPS
           </div>
         </div>
 
@@ -184,7 +185,7 @@ export const RasterizerDemo: React.FC = () => {
           </div>
 
           <div className="flex items-center justify-between">
-            <span className="label text-xs" style={{ color: 'var(--ink)' }}>Render Mode:</span>
+            <span className="label text-xs" style={{ color: 'var(--ink)' }}>Shading:</span>
             <button
               type="button"
               onClick={() => {
@@ -198,9 +199,24 @@ export const RasterizerDemo: React.FC = () => {
             </button>
           </div>
 
+          <div className="flex items-center justify-between">
+            <span className="label text-xs" style={{ color: 'var(--ink)' }}>Culling:</span>
+            <button
+              type="button"
+              onClick={() => {
+                playCutePop(850);
+                setCullingEnabled(!cullingEnabled);
+              }}
+              className="btn btn--secondary"
+              style={{ padding: '4px 10px', fontSize: '0.75rem' }}
+            >
+              {cullingEnabled ? '🛡️ Culling: ON' : '⭕ Culling: OFF'}
+            </button>
+          </div>
+
           <div>
             <div className="flex justify-between text-[11px] font-mono" style={{ color: 'var(--purple-d)' }}>
-              <span>Focal Length / Zoom:</span>
+              <span>Focal Length / Projection:</span>
               <span className="font-bold" style={{ color: 'var(--ink)' }}>{fov}</span>
             </div>
             <input
@@ -214,7 +230,7 @@ export const RasterizerDemo: React.FC = () => {
           </div>
 
           <p className="text-[11px] font-mono leading-tight pt-1 m-0" style={{ color: 'var(--purple-d)' }}>
-            ✨ Pure software rendering without GPU APIs. Projection: <code>Screen = ViewPort × Projection × View × World</code>
+            ✨ Illustrates 3D graphics mathematical pipeline: World ➔ View ➔ Perspective Projection ➔ Frustum / Backface Culling ➔ Depth Sorting ➔ Screen-space Rasterization.
           </p>
         </div>
       </div>
